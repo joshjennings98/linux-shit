@@ -84,9 +84,8 @@ alias flashkb='flash_keyboard'
 alias la='ls -a'
 
 # Aliases for directories
-alias docs='cd ~/Documents/ && ls'
-alias home='cd ~/ && ls'
-alias ..='cd ..'
+alias docs='cd ~/Documents/'
+alias home='cd ~/'
 
 
 
