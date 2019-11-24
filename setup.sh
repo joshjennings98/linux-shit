@@ -2,9 +2,8 @@
 
 # To Do: Need to add stuff for setting up Visual Studio Code extensions (and vim?), add more packages as necessary
 
-# Move and reload .bashrc
+# Move .bashrc
 mv -f .bashrc ~/
-source ~/.bashrc
 
 # Install stuff I like to have:
 #
@@ -67,6 +66,12 @@ wget http://installer.jdownloader.org/JD2SilentSetup_x64.sh
 chmod +x JD2SilentSetup_x64.sh
 ./JD2SilentSetup_x64.sh
 cd ~/
+# Reload .bashrc at end because it breaks the first time you run cd
+source ~/.bashrc
+
+# Get the broken cd out of it's system
+cd ~
+cd ~
 
 # Reboot the system
 reboot
