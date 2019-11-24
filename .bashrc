@@ -13,9 +13,13 @@ flash_keyboard()
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]
 
 then
-	echo "Add -i or --install to install dfu programmer."
-	echo "Add -f or --flash to flash to file in second argument."
-	echo "Add -h or --help to list help."
+	echo "Flash QMK firmware to keyboard."
+	echo " "
+	echo "usage: flashkb [-i|-f|-h] [src]"
+	echo " "
+	echo "  -h, --help	 list the help information."
+	echo "  -i, --install	 install the dfu programmer."
+	echo "  -f, --flash	 flash to at src to keyboard."
 fi
 
 if [ "$1" == "-i" ] || [ "$1" == "--install" ]
