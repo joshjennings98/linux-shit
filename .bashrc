@@ -8,7 +8,7 @@ megacd()
 flash_keyboard()
 {
 
-if [ "$1" == "-h" ] || [ "$1" == "-help" ]
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]
 
 then
 	echo "Add -i or --install to install dfu programmer."
