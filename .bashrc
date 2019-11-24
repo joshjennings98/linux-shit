@@ -64,7 +64,7 @@ fi
 }
 
 # Misc
-alias ls='ls --color=auto' # So ls is coloured correctly
+alias ls='ls -a --color=auto' # So ls is coloured correctly
 alias cd='megacd'
 
 # Aliases for commands
