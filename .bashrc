@@ -1,3 +1,5 @@
+alias ls='ls --color=auto' # So ls is coloured correctly
+
 # Functions
 megacd()
 {
@@ -64,7 +66,6 @@ fi
 }
 
 # Misc
-alias ls='ls --color=auto' # So ls is coloured correctly
 alias cd='megacd'
 
 # Aliases for commands
@@ -74,6 +75,7 @@ alias p='python3'
 alias pingtest='ping 8.8.8.8 -c 4'
 alias cd..='cd ..' # Cause I get this wrong often enough for this to be useful
 alias flashkb='flash_keyboard'
+alias la='ls -a'
 
 # Aliases for directories
 alias docs='cd ~/Documents/ && ls'
