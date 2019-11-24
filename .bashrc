@@ -10,9 +10,10 @@ megacd()
 flash_keyboard()
 {
 
-if [ "$1" == "-h" ] || [ "$1" == "--help" ]
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] || ["$1" == ""]
 
 then
+	echo " "
 	echo "Flash QMK firmware to keyboard."
 	echo " "
 	echo "usage: flashkb [-i|-f|-h] [src]"
@@ -20,6 +21,7 @@ then
 	echo "  -h, --help	 list the help information."
 	echo "  -i, --install	 install the dfu programmer."
 	echo "  -f, --flash	 flash to at src to keyboard."
+	echo " "
 fi
 
 if [ "$1" == "-i" ] || [ "$1" == "--install" ]
