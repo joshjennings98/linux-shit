@@ -69,10 +69,6 @@ cd ~/
 # Reload .bashrc at end because it breaks the first time you run cd
 source ~/.bashrc
 
-# Get the broken cd out of it's system
-cd ~
-cd ~
-
 # Reboot the system
 reboot
 	
