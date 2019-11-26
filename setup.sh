@@ -30,7 +30,6 @@ sudo apt update
 # Install everything
 sudo apt-get install ffmpeg
 sudo apt-get install cool-retro-term vlc code firefox youtube-dl monodevelop htop i3 feh -y 
-fi
 
 # JDownloader2 setup
 cd ~/Downloads
