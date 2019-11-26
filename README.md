@@ -16,3 +16,8 @@ sudo chmod +x ./setup.sh
 ## Notes: 
 * Not been properly tested so might break.
 * Some thins aren't set up for Arch Linux.
+
+
+## To Do
+* Move long .bashrc stuff to a bash file. [Tutorial](https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e).
+* Set up vim.
