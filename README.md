@@ -17,6 +17,6 @@ sudo chmod +x ./setup.sh
 
 ## To Do
 * Move long .bashrc stuff to a bash file. [Tutorial](https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e).
-* Set up vim.
-* Set up i3 (plus keyboard layer (honestly need to set upi keyboard layout) for i3 stuff).
-* Switch to a better distro than Ubuntu (UBUNTU JUST WORKS SO WELL...) and i3
+* Set up i3 (plus keyboard layer (honestly need to set up entire keyboard layout) for i3 stuff).
+* Add stuff in setup for autoconfiguring i3 and feh and wallpaper rotation and any other stuff that is needed for ubuntu to work well with i3.
+* Add set up for vscode extensions ([something similar to this](https://www.peerlator.com/blog/MyDotfilesPart5/)).
