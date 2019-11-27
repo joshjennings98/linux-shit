@@ -2,8 +2,12 @@
 
 # To Do: Need to add stuff for setting up Visual Studio Code extensions
 
-# Move .bashrc
+# Move .bashrc and stuff
 mv -f .bashrc ~/
+# need to move wallpapers
+# need to move i3status
+# need to move .Xresources
+# need to move (and reaload) i3config	
 
 if [ "$1" == "surface" ]
 then
@@ -14,7 +18,7 @@ then
 	sudo sh setup.sh
 fi
 
-# Install stuff I like to have:
+# Install stuff for using ppas
 sudo apt-get update	
 sudo apt-get install software-properties-common -y # ppa shit
 
@@ -27,9 +31,13 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
 sudo apt update
 
-# Install everything
-sudo apt-get install ffmpeg
-sudo apt-get install cool-retro-term vlc code firefox youtube-dl monodevelop htop i3 feh -y 
+# Install stuff I like to have
+sudo apt-get install ffmpeg scrot
+sudo apt-get install cool-retro-term vlc code firefox youtube-dl monodevelop htop -y 
+
+# Install i3 stuff
+sudo dnf install i3 i3status dmenu i3lock xbacklight feh conky
+xrandr --dpi 220 # Set up dpi scaling for i3
 
 # JDownloader2 setup
 cd ~/Downloads

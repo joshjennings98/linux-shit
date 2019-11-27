@@ -71,24 +71,79 @@ fi
 
 }
 
+bg()
+{
+while true
+do
+	/usr/bin/feh --randomize --bg-fill ~/wallpapers
+	sleep 5m
+done
+}
+
+alias randombg='bg'
+
+lock()
+{
+scrot /tmp/screenshot.png
+convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+i3lock -i /tmp/screenshotblur.png
+}
+
+alias lockscreen='lock'
+
+maze()
+{
+if [ "$1" == "-i" ] 
+
+then 
+	cd ~
+	git clone https://github.com/joshjennings98/maze-py
+	cd maze-py
+	python3 maze.py
+fi
+
+if [ "$1" == "-r" ]
+
+then
+	cd ~/maze-py
+	python3 maze.py $2 $3
+fi
+
+if [ "$1" == "-h" ]
+
+then
+	echo " "
+	echo "maze-py"
+	echo " "
+	echo " -i	Installs maze-py"
+	echo " -r	Runs maze-py"
+	echo " -h	Shows help information"
+	echo " "
+fi
+}
+
+alias maze='maze'
+
 # Misc
-alias cd='megacd'
+# alias cd='megacd'
 
 # Aliases for commands
 alias reloadbashrc='source ~/.bashrc'
 alias resetwifi='sudo /etc/init.d/network-manager restart'
 alias p='python3'
 alias pingtest='ping 8.8.8.8 -c 4'
-alias cd..='cd ..' # Cause I get this wrong often enough for this to be useful
+alias ..='cd ..' 
 alias flashkb='flash_keyboard'
 alias la='ls -a'
+alias ll='ls -al'
 
 # Aliases for directories
-alias docs='cd ~/Documents/'
-alias home='cd ~/'
+alias docs='cd ~/Documents/ && ls'
+alias home='cd ~/ && ls'
 
-# Misc alias
-alias breakterminal='echo -e "\033(0"'
+# Misc aliases
+alias breaktheterminal='echo -e "\033(0"'
+
 
 # Virtual Environment Wrapper
 source /usr/local/bin/virtualenvwrapper.sh
@@ -96,3 +151,4 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+
