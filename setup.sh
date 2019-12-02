@@ -2,6 +2,8 @@
 
 # To Do: Need to add stuff for setting up Visual Studio Code extensions
 
+# To install: vim, alsamixer
+
 # Move .bashrc and stuff
 mv -f .bashrc ~/
 # need to move wallpapers
@@ -33,12 +35,12 @@ sudo apt update
 
 # Install stuff I like to have
 sudo apt-get install ffmpeg scrot
-qw
+sudo apt-get install cool-retro-term vlc code firefox youtube-dl monodevelop htop -y 
 snap install code
 
 # Install i3 stuff
 sudo apt install i3 i3status dmenu i3lock xbacklight feh conky
-xrandr --dpi 220 # Set up dpi scaling for i3
+xrandr --dpi 180 # Set up dpi scaling for i3
 
 # JDownloader2 setup
 cd ~/Downloads

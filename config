@@ -40,8 +40,8 @@ bindsym $mod+Shift+q kill
 new_window pixel 1
 # exec --no-startup-id feh --bg-scale $wal
 
-exec_always --no-startup-id randombg
-
+exec_always --no-startup-id /usr/bin/feh --randomize --bg-fill ~/wallpapers
+exec_always --no-startup-id xrandr --dpi 180
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run

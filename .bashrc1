@@ -71,22 +71,13 @@ fi
 
 }
 
-bg()
-{
-while true
-do
-	/usr/bin/feh --randomize --bg-fill ~/wallpapers
-	sleep 5m
-done
-}
 
-alias randombg='bg'
 
 lock()
 {
-scrot /tmp/screenshot.png
-convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
-i3lock -i /tmp/screenshotblur.png
+scrot ~/ls.png
+convert ~/ls.png -blur 0x5 ~/ls.png
+i3lock -i ~/ls.png
 }
 
 alias lockscreen='lock'
@@ -145,10 +136,4 @@ alias home='cd ~/ && ls'
 alias breaktheterminal='echo -e "\033(0"'
 
 
-# Virtual Environment Wrapper
-source /usr/local/bin/virtualenvwrapper.sh
-
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
 
