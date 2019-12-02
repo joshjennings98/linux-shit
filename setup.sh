@@ -23,7 +23,7 @@ sudo apt-get update
 sudo apt-get install software-properties-common -y # ppa shit
 
 # cool-retro-term ppa
-sudo add-apt-repository ppa:noobslab/apps
+sudo add-apt-repository ppa:vantuz/cool-retro-term
 
 # MonoDevelop setup
 sudo apt install apt-transport-https dirmngr -y
@@ -33,10 +33,11 @@ sudo apt update
 
 # Install stuff I like to have
 sudo apt-get install ffmpeg scrot
-sudo apt-get install cool-retro-term vlc code firefox youtube-dl monodevelop htop -y 
+qw
+snap install code
 
 # Install i3 stuff
-sudo dnf install i3 i3status dmenu i3lock xbacklight feh conky
+sudo apt install i3 i3status dmenu i3lock xbacklight feh conky
 xrandr --dpi 220 # Set up dpi scaling for i3
 
 # JDownloader2 setup
