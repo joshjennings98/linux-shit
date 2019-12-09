@@ -1,12 +1,5 @@
 alias ls='ls --color=auto' # So ls is coloured correctly
 
-# Functions
-megacd()
-{
-    # cd into directory and list files
-    cd "$1" && ls
-}
-
 flash_keyboard()
 {
 
@@ -71,25 +64,12 @@ fi
 
 }
 
-bg()
-{
-while true
-do
-	/usr/bin/feh --randomize --bg-fill ~/wallpapers
-	sleep 5m
-done
-}
-
-alias randombg='bg'
-
 lock()
 {
-scrot /tmp/screenshot.png
-convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
-i3lock -i /tmp/screenshotblur.png
+	scrot ~/ls.png
+	convert ~/ls.png -blur 0x5 ~/ls.png
+	i3lock -i ~/ls.png
 }
-
-alias lockscreen='lock'
 
 maze()
 {
@@ -124,9 +104,6 @@ fi
 
 alias maze='maze'
 
-# Misc
-# alias cd='megacd'
-
 # Aliases for commands
 alias reloadbashrc='source ~/.bashrc'
 alias resetwifi='sudo /etc/init.d/network-manager restart'
@@ -136,19 +113,15 @@ alias ..='cd ..'
 alias flashkb='flash_keyboard'
 alias la='ls -a'
 alias ll='ls -al'
+alias lockscreen='lock' # For i3 config
 
 # Aliases for directories
 alias docs='cd ~/Documents/ && ls'
+alias down='cd ~/Downloads/ && ls'
 alias home='cd ~/ && ls'
 
 # Misc aliases
-alias breaktheterminal='echo -e "\033(0"'
+alias breakterminal='echo -e "\033(0"'
 
 
-# Virtual Environment Wrapper
-source /usr/local/bin/virtualenvwrapper.sh
-
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
 

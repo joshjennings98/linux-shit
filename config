@@ -112,12 +112,13 @@ bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -bl
 set $ws1 "1:main"
 set $ws2 "2:firefox"
 set $ws3 "3:code"
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-set $ws9 9
+set $ws4 "4:hello"
+set $ws5 "5:my"
+set $ws6 "6:name"
+set $ws7 "7:is"
+set $ws8 "8:josh"
+set $ws9 "9:jennings"
+set $ws10 "10:poopypoopoo"
 
 
 # Assign Workspaces:

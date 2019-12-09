@@ -36,7 +36,7 @@ sudo apt update
 # Install stuff I like to have
 sudo apt-get install ffmpeg scrot
 sudo apt-get install cool-retro-term vlc code firefox youtube-dl monodevelop htop -y 
-snap install code
+snap install code --install
 
 # Install i3 stuff
 sudo apt install i3 i3status dmenu i3lock xbacklight feh conky
@@ -49,7 +49,7 @@ chmod +x JD2SilentSetup_x64.sh
 ./JD2SilentSetup_x64.sh
 cd ~/
 
-# Set up fallout grub
+# Set up fallout grub (NOTE, MOVE REPO TO MY GITHUB AND CHECK FOR VIRUSES ETC.)
 wget -O - https://github.com/shvchk/fallout-grub-theme/raw/master/install.sh | bash 
 
 # Reload .bashrc at end because it breaks the first time you run cd
