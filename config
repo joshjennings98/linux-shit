@@ -11,7 +11,7 @@
 
 set $mod Mod1
 
-set $wal ~/wallpapers/bionicbeaver.png
+set $wal ~/wallpapers/amberchronicles.jpg
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -32,15 +32,20 @@ font pango:monospace 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec cool-retro-term
+# bindsym $mod+Return exec cool-retro-term
+bindsym $mod+Return exec xterm
+
+# reload bashrc, xresources, etc.
+exec_always --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id reloadbashrc
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 new_window pixel 1
-# exec --no-startup-id feh --bg-scale $wal
+exec_always --no-startup-id feh --bg-fill $wal
 
-exec_always --no-startup-id /usr/bin/feh --randomize --bg-fill ~/wallpapers
+# exec_always --no-startup-id /usr/bin/feh --randomize --bg-fill ~/wallpapers
 exec_always --no-startup-id xrandr --dpi 180
 
 # start dmenu (a program launcher)
@@ -50,7 +55,7 @@ exec_always --no-startup-id xrandr --dpi 180
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+d exec --no-startup-id rofi -theme solarized -font "hack 30" -lines 6 -show run
+bindsym $mod+d exec --no-startup-id rofi -theme Monokai -font "hack 36" -lines 6 -show run -display-run ""
 
 # change focus
 # bindsym $mod+j focus left
@@ -112,13 +117,13 @@ bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -bl
 set $ws1 "1:main"
 set $ws2 "2:firefox"
 set $ws3 "3:code"
-set $ws4 "4:hello"
-set $ws5 "5:my"
-set $ws6 "6:name"
-set $ws7 "7:is"
-set $ws8 "8:josh"
-set $ws9 "9:jennings"
-set $ws10 "10:poopypoopoo"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
 
 
 # Assign Workspaces:

@@ -11,6 +11,8 @@ mv -f .bashrc ~/
 # need to move .Xresources
 # need to move (and reaload) i3config	
 
+# need to install .net sdk
+
 if [ "$1" == "surface" ]
 then
 	# Set up Jakeday kernel patch for surface	
