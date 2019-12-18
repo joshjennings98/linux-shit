@@ -111,6 +111,8 @@ bindsym $mod+a focus parent
 # bindsym $mod+l exec "convert -resize 2736x1824\! $wal lock.png & i3lock -i ~/lock.png"
 bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png"
 
+# keyboard layout
+exec_always --no-startup-id setxkbmap -layout gb
 
 # custom variables for workspaces
 
