@@ -10,7 +10,6 @@ mv -f i3status.conf ~/.config/i3/
 mv -f i3config ~/.config/i3/
 mkdir ~/wallpapers
 mv /wallpapers/amberchronicles.jpg ~/wallpapers/
-# need to move (and reaload) i3config	
 
 if [ "$1" == "surface" ]
 then
@@ -21,40 +20,38 @@ then
 	sudo sh setup.sh
 fi
 
-# Install stuff for using ppas
+# Install useful prerequisite stuff
 sudo apt-get update	
+sudo apt-get upgrade
+sudo add-apt-repository universe
+sudo apt-get update
 sudo apt-get install software-properties-common -y # ppa shit
+sudo apt-get install apt-transport-https
+sudo apt-get update
 
 # cool-retro-term ppa (not at moment)
 # sudo add-apt-repository ppa:vantuz/cool-retro-term
 # sudo apt install cool-retro-term 
 
-# MonoDevelop setup (need monodevelop to restore files)
-sudo apt install apt-transport-https dirmngr -y
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
+# Install F# dev stuff (remember to do load project first in monodevelop to fix packages (or work out a way to restore packages using vscode)) 
+sudo apt install apt-transport-https dirmngr -y # monodevelop part 1 (need monodevelop to restore files)
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF # monodevelop part 2
+echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list # monodevelop part 3
 sudo apt update
-
-# Install F# stuff (remember to do load project first in monodevelop to fix packages (or work out a way to restore packages using vscode)) 
-wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-
-sudo add-apt-repository universe
-sudo apt-get update
-sudo apt-get install apt-transport-https
-sudo apt-get update
-sudo apt-get install dotnet-sdk-3.1
-
-sudo apt install fsharp
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb #.Net Stuff part 1
+sudo dpkg -i packages-microsoft-prod.deb #.Net Stuff part 2
+sudo apt-get install dotnet-sdk-3.1 -y #.Net Stuff part 3
+sudo apt install fsharp -y # F# Stuff
+sudo apt install monodevelop -y # Need monodevelop
 
 # Install i3 stuff
-sudo apt install i3 i3status dmenu i3lock xbacklight feh conky -y
+sudo apt install i3 i3status dmenu i3lock xbacklight feh conky rofi -y
 xrandr --dpi 180 # Set up dpi scaling for i3
 
 # Install stuff I like to have
-sudo apt-get install ffmpeg scrot rxvt-unicode -y
-sudo apt-get install vlc firefox youtube-dl htop ranger alsamixer vim monodevelop -y
-snap install code --install
+sudo apt-get install ffmpeg scrot rxvt-unicode alsamixer vim -y # Prerequisit/Useful Stuff
+sudo apt-get install vlc firefox youtube-dl htop ranger cool-retro-term blueman -y # Programs
+snap install code --install # VS Code requires snap
 
 # JDownloader2 setup
 cd ~/Downloads
