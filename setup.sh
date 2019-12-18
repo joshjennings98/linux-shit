@@ -51,7 +51,7 @@ xrandr --dpi 180 # Set up dpi scaling for i3
 # Install stuff I like to have
 sudo apt-get install ffmpeg scrot xterm alsamixer vim -y # Prerequisit/Useful Stuff
 sudo apt-get install vlc firefox youtube-dl htop ranger cool-retro-term -y # Misc Programs
-sudo apt-get install network-manager blueman -y # QoL programs
+sudo apt-get install network-manager blueman brightnessctl -y # QoL programs
 snap install code --install # VS Code requires snap
 
 # JDownloader2 setup
