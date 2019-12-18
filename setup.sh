@@ -25,6 +25,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo add-apt-repository universe
 sudo apt-get update
+sudo apt install exfat-fuse exfat-utils -y # exfat stuff
 sudo apt-get install software-properties-common -y # ppa shit
 sudo apt-get install apt-transport-https
 sudo apt-get update
