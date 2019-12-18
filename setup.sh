@@ -29,13 +29,13 @@ sudo apt-get install software-properties-common -y # ppa shit
 # sudo add-apt-repository ppa:vantuz/cool-retro-term
 # sudo apt install cool-retro-term 
 
-# MonoDevelop setup
+# MonoDevelop setup (need monodevelop to restore files)
 sudo apt install apt-transport-https dirmngr -y
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
 sudo apt update
 
-# Install F# stuff (remember to do `restore packages` in vscode) 
+# Install F# stuff (remember to do load project first in monodevelop to fix packages (or work out a way to restore packages using vscode)) 
 wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 
@@ -53,7 +53,7 @@ xrandr --dpi 180 # Set up dpi scaling for i3
 
 # Install stuff I like to have
 sudo apt-get install ffmpeg scrot rxvt-unicode -y
-sudo apt-get install vlc firefox youtube-dl htop ranger alsamixer vim -y # Might need to add monodevelop
+sudo apt-get install vlc firefox youtube-dl htop ranger alsamixer vim monodevelop -y
 snap install code --install
 
 # JDownloader2 setup
