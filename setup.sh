@@ -49,7 +49,7 @@ sudo apt install i3 i3status dmenu i3lock xbacklight feh conky rofi -y
 xrandr --dpi 180 # Set up dpi scaling for i3
 
 # Install stuff I like to have
-sudo apt-get install ffmpeg scrot rxvt-unicode alsamixer vim -y # Prerequisit/Useful Stuff
+sudo apt-get install ffmpeg scrot xterm alsamixer vim -y # Prerequisit/Useful Stuff
 sudo apt-get install vlc firefox youtube-dl htop ranger cool-retro-term -y # Misc Programs
 sudo apt-get install network-manager blueman -y # QoL programs
 snap install code --install # VS Code requires snap
