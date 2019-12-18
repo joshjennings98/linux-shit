@@ -115,13 +115,13 @@ alias la='ls -a'
 alias ll='ls -al'
 alias lockscreen='lock' # For i3 config
 
+alias blset='sudo brightnessctl set'
+
 # Aliases for directories
 alias docs='cd ~/Documents/ && ls'
 alias down='cd ~/Downloads/ && ls'
 alias home='cd ~/ && ls'
 
-# Misc aliases
-alias breakterminal='echo -e "\033(0"'
 
 
 
