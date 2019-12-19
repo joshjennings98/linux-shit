@@ -39,6 +39,9 @@ bindsym $mod+Return exec xterm
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id reloadbashrc
 
+# keyboard layout
+exec_always --no-startup-id setxkbmap -layout gb
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
