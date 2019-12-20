@@ -1,5 +1,11 @@
 alias ls='ls --color=auto' # So ls is coloured correctly
 
+batch_rename()
+{
+	# batch rename all files with the file extension $1
+	for f in *.$1; do mv -n "$f" "${f/*/$RANDOM$RANDOM.$1}"; done
+}
+
 flash_keyboard()
 {
 
@@ -115,7 +121,9 @@ alias la='ls -a'
 alias ll='ls -al'
 alias lockscreen='lock' # For i3 config
 
-alias blset='sudo brightnessctl set'
+alias blset='sudo brightnessctl set' # Set brightness
+
+alias batchrename='batch_rename' # Batch rename file extension
 
 # Aliases for directories
 alias docs='cd ~/Documents/ && ls'
