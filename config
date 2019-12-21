@@ -122,7 +122,7 @@ exec_always --no-startup-id setxkbmap -layout gb
 set $ws1 "1:main"
 set $ws2 "2:firefox"
 set $ws3 "3:code"
-set $ws4 "4:"
+set $ws4 "4:spotify"
 set $ws5 "5:"
 set $ws6 "6:"
 set $ws7 "7:"
@@ -134,6 +134,7 @@ set $ws10 "10:"
 # Assign Workspaces:
 assign [class="Firefox"] $ws2
 assign [instance=code] $ws3
+assign [instance=spt] $ws4
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
