@@ -18,6 +18,7 @@ mv /wallpapers/amberchronicles.jpg ~/wallpapers/
 # Configure spotifyd (https://github.com/Spotifyd/spotifyd)
 mkdir ~/.config/spotifyd
 mv spotifyd.conf ~/.config/spotifyd # Note need to add spotify password
+mv spotifyd ~/
 
 # Stuff for surface
 if [ "$1" == "surface" ]
