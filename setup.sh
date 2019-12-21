@@ -57,7 +57,7 @@ xrandr --dpi 180 # Set up dpi scaling for i3
 
 # Install stuff I like to have
 sudo apt-get install ffmpeg scrot xterm alsamixer vim -y # Prerequisit/Useful Stuff
-sudo apt-get install vlc firefox youtube-dl htop ranger keepass2 rdfind pinta -y # Misc Programs
+sudo apt-get install vlc firefox youtube-dl htop mc keepass2 rdfind pinta -y # Misc Programs
 sudo apt-get install network-manager blueman brightnessctl -y # QoL programs
 snap install code --install # VS Code requires snap
 snap install spt --channel=edge # spt (terminal spotify thing) also requires snap <- It also requires extra set up: https://github.com/Rigellute/spotify-tui#connecting-to-spotifys-api
