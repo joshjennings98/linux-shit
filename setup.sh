@@ -2,15 +2,24 @@
 
 # To Do: Need to add stuff for setting up Visual Studio Code extensions
 
-# Move .bashrc and stuff
+# Move .bashrc and .Xresources
 mv -f .bashrc ~/
 mv -f .Xresources ~/
+
+# Move i3 stuff
 mkdir ~/.config/i3
 mv -f i3status.conf ~/.config/i3/
 mv -f i3config ~/.config/i3/
+
+# Set up wallpapers
 mkdir ~/wallpapers
 mv /wallpapers/amberchronicles.jpg ~/wallpapers/
 
+# Configure spotifyd (https://github.com/Spotifyd/spotifyd)
+mkdir ~/.config/spotifyd
+mv spotifyd.conf ~/.config/spotifyd # Note need to add spotify password
+
+# Stuff for surface
 if [ "$1" == "surface" ]
 then
 	# Set up Jakeday kernel patch for surface	
