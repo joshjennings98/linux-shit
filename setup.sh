@@ -40,10 +40,6 @@ sudo apt-get install software-properties-common -y # ppa shit
 sudo apt-get install apt-transport-https
 sudo apt-get update
 
-# cool-retro-term ppa (not at moment)
-# sudo add-apt-repository ppa:vantuz/cool-retro-term
-# sudo apt install cool-retro-term 
-
 # Install F# dev stuff (remember to do load project first in monodevelop to fix packages (or work out a way to restore packages using vscode)) 
 sudo apt install apt-transport-https dirmngr -y # monodevelop part 1 (need monodevelop to restore files)
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF # monodevelop part 2
@@ -61,7 +57,7 @@ xrandr --dpi 180 # Set up dpi scaling for i3
 
 # Install stuff I like to have
 sudo apt-get install ffmpeg scrot xterm alsamixer vim -y # Prerequisit/Useful Stuff
-sudo apt-get install vlc firefox youtube-dl htop ranger cool-retro-term keepass2 rdfind pinta -y # Misc Programs
+sudo apt-get install vlc firefox youtube-dl htop ranger keepass2 rdfind pinta -y # Misc Programs
 sudo apt-get install network-manager blueman brightnessctl -y # QoL programs
 snap install code --install # VS Code requires snap
 snap install spt --channel=edge # spt (terminal spotify thing) also requires snap <- It also requires extra set up: https://github.com/Rigellute/spotify-tui#connecting-to-spotifys-api
@@ -81,5 +77,5 @@ source ~/.bashrc
 xrdb ~/.Xresources
 
 # Reboot the system
-reboot
-	
+echo "You should probably reboot the system now."
+echo "Remember to set up spotifyd."
