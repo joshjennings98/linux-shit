@@ -108,27 +108,29 @@ then
 fi
 }
 
-alias maze='maze'
-
-# Aliases for commands
-alias reloadbashrc='source ~/.bashrc'
-alias resetwifi='sudo /etc/init.d/network-manager restart'
-alias p='python3'
-alias pingtest='ping 8.8.8.8 -c 4'
-alias ..='cd ..' 
-alias flashkb='flash_keyboard'
-alias la='ls -a'
-alias ll='ls -al'
-alias lockscreen='lock' # For i3 config
-
-alias blset='sudo brightnessctl set' # Set brightness
-
-alias batchrename='batch_rename' # Batch rename file extension
+alias maze='maze' # my shitty maze thing
 
 # Aliases for directories
 alias docs='cd ~/Documents/ && ls'
 alias down='cd ~/Downloads/ && ls'
 alias home='cd ~/ && ls'
+
+
+# Aliases for commands
+alias reloadbashrc='source ~/.bashrc' # reload bashrc
+alias resetwifi='sudo /etc/init.d/network-manager restart' #reset wifi cause it breaks sometimes
+alias p='python3' # python alias
+alias pingtest='ping 8.8.8.8 -c 4' # ping
+alias ..='cd ..' # cd back one level
+alias flashkb='flash_keyboard' # flash keyboard command
+alias la='ls -aF' # list all
+alias ll='ls -lhFBA' # list all in a list with human readable stuff, extensions, no backup files, and no .. .
+alias lr='ls -R' # list EVERYTHING (recursive ls)
+alias lockscreen='lock' # For i3 config lockscreen
+alias blset='sudo brightnessctl set' # Set brightness
+alias batchrename='batch_rename' # Batch rename file extension (broken)
+alias lsalias="grep -in --color -e '^alias\s+*' ~/.bashrc | sed 's/alias //' | grep --colour -e ':[a-z][a-z0-9]*'" # list all aliases
+
 
 
 
