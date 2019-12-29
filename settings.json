@@ -1,0 +1,29 @@
+{
+    "window.zoomLevel": 4,
+    "workbench.startupEditor": "newUntitledFile",
+    "git.autofetch": true,
+    "workbench.colorTheme": "Material Theme Darker",
+    "workbench.activityBar.visible": true,
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorCustomizations": {
+        "editor.background": "#000000",
+        "activityBar.background": "#111111",
+        "activityBar.border": "#111111",
+        "panel.background": "#111111",
+        "panel.border": "#000000",
+        "sideBar.background": "#111111",
+        "sideBar.border": "#111111",
+        "sideBarSectionHeader.background": "#111111",
+        "tab.inactiveBackground": "#111111",
+        "tab.activeBackground": "#111111",
+        "tab.activeBorder": "#111111",
+        "tab.border": "#111111",
+        "terminal.background": "#111111",
+        "statusBar.noFolderBackground": "#111111",
+        "statusBar.background": "#111111",
+        "statusBar.border": "#111111",
+        "editorGroupHeader.tabsBackground": "#111111",
+        "breadcrumb.background": "#111111",
+        
+    }
+}
