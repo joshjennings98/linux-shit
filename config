@@ -179,7 +179,7 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id i3-msg 'workspace $ws2; exec firefox; workspace $ws3; exec code; workspace $ws1'
 
 # class                 border  bground text    indicator child_border
-client.focused          #FFFFFF #285577 #FFFFFF #FFFFFF   #222222
+client.focused          #FFFFFF #285577 #FFFFFF #000000   #222222
 client.focused_inactive #333333 #5F676A #FFFFFF #000000   #000000
 client.unfocused        #333333 #222222 #888888 #000000   #000000
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
