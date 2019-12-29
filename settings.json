@@ -18,12 +18,16 @@
         "tab.activeBackground": "#111111",
         "tab.activeBorder": "#111111",
         "tab.border": "#111111",
+        "tab.unfocusedActiveBorder": "#111111",
         "terminal.background": "#111111",
         "statusBar.noFolderBackground": "#111111",
         "statusBar.background": "#111111",
         "statusBar.border": "#111111",
         "editorGroupHeader.tabsBackground": "#111111",
         "breadcrumb.background": "#111111",
-        
-    }
+    },
+    "LineCount.includes": [
+        // Change this depending on project
+        "**/*.fs"
+    ]
 }
