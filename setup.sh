@@ -76,4 +76,3 @@ xrdb ~/.Xresources
 
 # Reboot the system
 echo "You should probably reboot the system now."
-echo "Remember to set up spotifyd."
