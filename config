@@ -107,8 +107,8 @@ set $ws10 "10:"
 # Assign specific stuff to workspaces:
 assign [class="Firefox"] $ws2
 assign [instance=code] $ws3
-assign [instance=spt] $ws4 # This doesn't work for some reason
-assign [class="Steam"] $ws5 # This also doesn't work for some reason
+for_window [class="Spotify"] move to workspace $ws4
+for_window [class="Steam"] move to workspace $ws5
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -170,7 +170,7 @@ mode "resize" {
 # shortcuts for commonly used programs
 bindsym $mod+Shift+f exec xterm -e mc -b
 bindsym $mod+Shift+b exec firefox
-bindsym $mod+Shift+s exec xterm -e spt
+bindsym $mod+Shift+s exec spotify
 bindsym $mod+Shift+c exec code
 
 bindsym $mod+r mode "resize"
