@@ -11,6 +11,9 @@ mkdir ~/.config/i3
 mv -f i3status.conf ~/.config/i3/
 mv -f i3config ~/.config/i3/
 
+# Move spotify bar stuff
+mv -f ~/i3spotifystatus ~/
+
 # Set up wallpapers
 mkdir ~/wallpapers
 mv /wallpapers/amberchronicles.jpg ~/wallpapers/
