@@ -35,7 +35,11 @@ sudo add-apt-repository universe
 sudo apt-get update
 sudo apt install exfat-fuse exfat-utils -y # exfat stuff
 sudo apt-get install software-properties-common -y # ppa shit
-sudo apt-get install apt-transport-https
+sudo apt-get install apt-transport-https -y
+sudo atp-get update
+
+# veracrypt stuff
+sudo add-apt-repository ppa:unit193/encryption # veracrypt ppa
 sudo apt-get update
 
 # Install F# dev stuff (remember to do load project first in monodevelop to fix packages (or work out a way to restore packages using vscode)) 
@@ -54,11 +58,11 @@ sudo apt install i3 i3status dmenu i3lock xbacklight feh conky rofi -y
 xrandr --dpi 180 # Set up dpi scaling for i3
 
 # Install stuff I like to have
-sudo apt-get install ffmpeg scrot xterm alsamixer vim imagemagick fonts-font-awesome -y # Prerequisit/Useful Stuff
-sudo apt-get install vlc firefox youtube-dl htop mc keepass2 rdfind pinta spotify -y # Misc Programs
+sudo apt-get install ffmpeg scrot xterm alsamixer vim imagemagick fonts-font-awesome snap -y # Prerequisit/Useful Stuff
+sudo apt-get install vlc firefox youtube-dl htop mc keepass2 veracrypt rdfind pinta spotify -y # Misc Programs
 sudo apt-get install network-manager blueman brightnessctl -y # QoL programs
-snap install code --install # VS Code requires snap
-snap install spt --channel=edge # spt (terminal spotify thing) also requires snap <- It also requires extra set up: https://github.com/Rigellute/spotify-tui#connecting-to-spotifys-api
+sudo apt-get install vagrant virtualbox -y # fyp stuff
+snap install code --classic # vscode requires snap
 
 # JDownloader2 setup
 cd ~/Downloads
@@ -75,4 +79,5 @@ source ~/.bashrc
 xrdb ~/.Xresources
 
 # Reboot the system
-echo "You should probably reboot the system now."
+echo "Rebooting the system."
+reboot
