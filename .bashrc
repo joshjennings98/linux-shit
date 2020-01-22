@@ -108,6 +108,12 @@ then
 fi
 }
 
+newfsharpproject()
+{
+	# create a new fsharp project called $1
+	dotnet new console -lang "F#" -o $1
+}
+
 alias maze='maze' # my shitty maze thing
 
 # Aliases for directories
@@ -115,6 +121,7 @@ alias docs='cd ~/Documents/ && ls'
 alias down='cd ~/Downloads/ && ls'
 alias home='cd ~/ && ls'
 
+alias newfs ='newfsharpproject'
 
 # Aliases for commands
 alias reloadbashrc='source ~/.bashrc' # reload bashrc
