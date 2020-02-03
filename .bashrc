@@ -108,11 +108,7 @@ then
 fi
 }
 
-newfsharpproject()
-{
-	# create a new fsharp project called $1
-	dotnet new console -lang "F#" -o $1
-}
+
 
 alias maze='maze' # my shitty maze thing
 
@@ -121,9 +117,8 @@ alias docs='cd ~/Documents/ && ls'
 alias down='cd ~/Downloads/ && ls'
 alias home='cd ~/ && ls'
 
-alias newfs ='newfsharpproject'
-
 # Aliases for commands
+alias dual='xrandr --output eDP1 --auto --output HDMI1' # need to check this is right and update if necessary
 alias reloadbashrc='source ~/.bashrc' # reload bashrc
 alias resetwifi='sudo /etc/init.d/network-manager restart' #reset wifi cause it breaks sometimes
 alias p='python3' # python alias
