@@ -60,9 +60,9 @@ xrandr --dpi 180 # Set up dpi scaling for i3
 
 # Install stuff I like to have
 sudo apt-get install network-manager ffmpeg scrot xterm alsamixer vim imagemagick fonts-font-awesome snap -y # Prerequisit/Useful Stuff
-sudo apt-get install vlc firefox youtube-dl htop mc keepass2 veracrypt rdfind pinta spotify ncdu -y # Misc Programs
+sudo apt-get install vlc firefox youtube-dl htop ranger keepass2 veracrypt rdfind pinta ncdu -y # Misc Programs
 sudo apt-get install nmtui blueman brightnessctl -y # QoL programs
-sudo apt-get install vagrant virtualbox -y # fyp stuff
+# sudo apt-get install vagrant virtualbox -y # fyp stuff
 snap install code --classic # vscode requires snap
 
 # JDownloader2 setup

@@ -208,7 +208,7 @@ bar {
     }
 	position top
 	separator_symbol " | "
-	status_command i3status -c ~/.config/i3/i3status.conf | ~/.i3spotifystatus/pystatus.py
+	status_command i3status -c ~/.config/i3/i3status.conf
 	strip_workspace_numbers no
 }
 
