@@ -17,6 +17,7 @@ mv -f ~/i3spotifystatus ~/
 # Set up wallpapers
 mkdir ~/wallpapers
 mv /wallpapers/amberchronicles.jpg ~/wallpapers/
+mv /wallpapers/wayofkings.jpg ~/wallpapers/
 
 # Stuff for surface
 if [ "$1" == "surface" ]
