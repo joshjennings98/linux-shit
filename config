@@ -87,10 +87,10 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # lock screen (blur)
-bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png"
+# bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png"
 
-# lock screen (fantasy wallpapers)
-# bindsym $mod+l exec "i3lock -i ~/linux-shit/lockscreens/wayofkings.png # need to change so it randomly picks an image from lock screens
+# lock screen (amber chronicles wallpaper)
+# bindsym $mod+l exec "i3lock -i ~/wallpapers/amberchronicles.jpg
 
 # custom names for workspaces
 set $ws1 "1"
