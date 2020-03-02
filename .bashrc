@@ -112,8 +112,8 @@ alias home='cd ~/ && ls'
 
 # Aliases for commands
 alias dual='xrandr --output eDP1 --auto --output HDMI1' # need to check this is right and update if necessary
-# alias dpidual='' # Need to set this up
-# alias dpisingle='' # Need to set this up
+alias dpidual='xrandr --dpi 180'
+alias dpisingle='xrandr --dpi 220'
 alias reloadbashrc='source ~/.bashrc' # reload bashrc
 alias resetwifi='sudo /etc/init.d/network-manager restart' #reset wifi cause it breaks sometimes
 alias p='python3' # python alias
