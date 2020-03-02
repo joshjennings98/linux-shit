@@ -3,21 +3,21 @@
 # To Do: Need to add stuff for setting up Visual Studio Code extensions
 
 # Move .bashrc and .Xresources
-mv -f .bashrc ~/
-mv -f .Xresources ~/
+cp -i .bashrc ~/
+cp -i .Xresources ~/
 
 # Move i3 stuff
 mkdir ~/.config/i3
-mv -f i3status.conf ~/.config/i3/
-mv -f i3config ~/.config/i3/
+cp -i i3status.conf ~/.config/i3/
+cp -i i3config ~/.config/i3/
 
 # Move spotify bar stuff
-mv -f ~/i3spotifystatus ~/
+cp -i ~/i3spotifystatus ~/
 
 # Set up wallpapers
 mkdir ~/wallpapers
-mv /wallpapers/amberchronicles.jpg ~/wallpapers/
-mv /wallpapers/wayofkings.jpg ~/wallpapers/
+cp -i /wallpapers/amberchronicles.jpg ~/wallpapers/
+cp -i /wallpapers/wayofkings.jpg ~/wallpapers/
 
 # Stuff for surface
 if [ "$1" == "surface" ]
@@ -43,16 +43,17 @@ sudo atp-get update
 sudo add-apt-repository ppa:unit193/encryption # veracrypt ppa
 sudo apt-get update
 
+# Replace this with something better
 # Install F# dev stuff (remember to do load project first in monodevelop to fix packages (or work out a way to restore packages using vscode)) 
-sudo apt install apt-transport-https dirmngr -y # monodevelop part 1 (need monodevelop to restore files)
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF # monodevelop part 2
-echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list # monodevelop part 3
-sudo apt update
-wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb #.Net Stuff part 1
-sudo dpkg -i packages-microsoft-prod.deb #.Net Stuff part 2
-sudo apt-get install dotnet-sdk-3.1 -y #.Net Stuff part 3
-sudo apt install fsharp -y # F# Stuff
-sudo apt install monodevelop -y # Need monodevelop
+# sudo apt install apt-transport-https dirmngr -y # monodevelop part 1 (need monodevelop to restore files)
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF # monodevelop part 2
+# echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list # monodevelop part 3
+# sudo apt update
+# wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb #.Net Stuff part 1
+# sudo dpkg -i packages-microsoft-prod.deb #.Net Stuff part 2
+# sudo apt-get install dotnet-sdk-3.1 -y #.Net Stuff part 3
+# sudo apt install fsharp -y # F# Stuff
+# sudo apt install monodevelop -y # Need monodevelop
 
 # Install i3 stuff
 sudo apt install i3 i3status dmenu i3lock xbacklight feh conky rofi -y
@@ -65,7 +66,7 @@ sudo apt-get install nmtui blueman brightnessctl -y # QoL programs
 # sudo apt-get install vagrant virtualbox -y # fyp stuff
 snap install code --classic # vscode requires snap
 
-# JDownloader2 setup
+# Install JDownloader2
 cd ~/Downloads
 wget http://installer.jdownloader.org/JD2SilentSetup_x64.sh
 chmod +x JD2SilentSetup_x64.sh
@@ -73,7 +74,7 @@ chmod +x JD2SilentSetup_x64.sh
 cd ~/
 
 # Set up fallout grub (NOTE, MOVE REPO TO MY GITHUB AND CHECK FOR VIRUSES ETC.)
-wget -O - https://github.com/shvchk/fallout-grub-theme/raw/master/install.sh | bash 
+# wget -O - https://github.com/shvchk/fallout-grub-theme/raw/master/install.sh | bash 
 
 # Reload .bashrc and stuff
 source ~/.bashrc
