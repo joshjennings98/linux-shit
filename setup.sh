@@ -3,21 +3,21 @@
 # To Do: Need to add stuff for setting up Visual Studio Code extensions
 
 # Move .bashrc and .Xresources
-cp -i .bashrc ~/
-cp -i .Xresources ~/
+cp -f .bashrc ~/
+cp -f .Xresources ~/
 
 # Move i3 stuff
 mkdir ~/.config/i3
-cp -i i3status.conf ~/.config/i3/
-cp -i i3config ~/.config/i3/
+cp -f i3status.conf ~/.config/i3/
+cp -f config ~/.config/i3/
 
 # Move spotify bar stuff
-cp -i ~/i3spotifystatus ~/
+cp -rf i3spotifystatus ~/
 
 # Set up wallpapers
 mkdir ~/wallpapers
-cp -i /wallpapers/amberchronicles.jpg ~/wallpapers/
-cp -i /wallpapers/wayofkings.jpg ~/wallpapers/
+cp -f wallpapers/amberchronicles.png ~/wallpapers/
+cp -f wallpapers/wayofkings.png ~/wallpapers/
 
 # Stuff for surface
 if [ "$1" == "surface" ]
@@ -64,7 +64,8 @@ sudo apt-get install network-manager ffmpeg scrot xterm alsamixer vim imagemagic
 sudo apt-get install vlc firefox youtube-dl htop ranger keepass2 veracrypt rdfind pinta ncdu -y # Misc Programs
 sudo apt-get install nmtui blueman brightnessctl -y # QoL programs
 # sudo apt-get install vagrant virtualbox -y # fyp stuff
-snap install code --classic # vscode requires snap
+sudo snap install code --classic # vscode requires snap
+sudo snap install spotify # spotify requires snap
 
 # Install JDownloader2
 cd ~/Downloads
@@ -81,5 +82,5 @@ source ~/.bashrc
 xrdb ~/.Xresources
 
 # Reboot the system
-echo "Rebooting the system."
-reboot
+# echo "Rebooting the system."
+# reboot

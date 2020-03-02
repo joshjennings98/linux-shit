@@ -95,9 +95,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# set up workspaces on start up
-exec_always --no-startup-id i3-msg 'workspace $ws2; exec firefox; workspace $ws3; exec code; workspace $ws1'
-
 # class                 border  bground text    indicator child_border
 client.focused          #FFFFFF #285577 #FFFFFF #000000   #222222
 client.focused_inactive #333333 #5F676A #FFFFFF #000000   #000000
@@ -111,12 +108,6 @@ bar {
         background #000000
         statusline #ffffff
         separator #666666
-
-        # focused_workspace  #666666 #444444 #FFFFFF
-    	# active_workspace   #222222 #222222 #FFFFFF
-    	# inactive_workspace #222222 #222222 #888888
-        # urgent_workspace   #2f343a #900000 #ffffff
-        # binding_mode       #2f343a #900000 #ffffff
         
         focused_workspace  #000000 #000000 #FFFFFF
     	active_workspace   #000000 #000000 #FFFFFF
@@ -126,7 +117,7 @@ bar {
     }
 	position top
 	separator_symbol " | "
-	status_command i3status -c ~/.config/i3/i3status.conf | ~/i3spotifystatus/pystatus.py
+	status_command i3status -c ~/.config/i3/i3status.conf # | ~/i3spotifystatus/pystatus.py
 	strip_workspace_numbers no
 }
 
