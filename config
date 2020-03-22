@@ -4,7 +4,7 @@
 set $mod Mod1
 
 # Font for window titles although they are hidden
-font pango:monospace 12
+font pango:monospace, Awesome 14
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -46,16 +46,16 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # custom names for workspaces
-set $ws1 "1:main"
-set $ws2 "2:web"
-set $ws3 "3:code"
-set $ws4 "4:music"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "&#xf015;  home"
+set $ws2 "&#xf269;  web"
+set $ws3 "&#xf121;  code"
+set $ws4 "&#xf1bc;  spotify"
+set $ws5 "&#xf120;  ws5"
+set $ws6 "&#xf120;  ws6"
+set $ws7 "&#xf120;  ws7"
+set $ws8 "&#xf120;  ws8"
+set $ws9 "&#xf120;  ws9"
+set $ws10 "&#xf120;  ws10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -137,7 +137,7 @@ exec_always --no-startup-id setxkbmap -layout gb
 exec_always --no-startup-id xrandr --dpi 180
 
 # set wallpaper
-set $wal ~/wallpapers/wayofkings.png
+set $wal ~/wallpapers/nebula.jpg
 exec_always --no-startup-id feh --bg-fill $wal
 
 # lock screen (blur)
@@ -172,7 +172,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Volume keys
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Speaker unmute ; amixer -q sset Headphone unmutHeadphone unmute; amixer -q sset Master toggle"
+bindsym XF86AudioMute exec "amixer -q sset Speaker unmute ; amixer -q sset Headphone unmute; amixer -q sset Master toggle"
 
 # Alt+. for play
 bindcode $mod+60 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
