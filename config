@@ -47,15 +47,15 @@ bindsym $mod+space focus mode_toggle
 
 # custom names for workspaces
 set $ws1 "1:main"
-set $ws2 "2:firefox"
+set $ws2 "2:web"
 set $ws3 "3:code"
-set $ws4 "4:spotify"
-set $ws5 "5:"
-set $ws6 "6:"
-set $ws7 "7:"
-set $ws8 "8:"
-set $ws9 "9:"
-set $ws10 "10:"
+set $ws4 "4:music"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -84,10 +84,14 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # resize window (you can also use the mouse for that)
 mode "resize" {
 	# These bindings trigger as soon as you enter the resize mode
-	bindsym Left resize shrink width 10 px or 10 ppt # Pressing left will shrink the window’s width.
-	bindsym Down resize grow height 10 px or 10 ppt # Pressing right will grow the window’s width.
-	bindsym Up resize shrink height 10 px or 10 ppt # Pressing up will shrink the window’s height.
-	bindsym Right resize grow width 10 px or 10 ppt # Pressing down will grow the window’s height.
+	# Pressing left will shrink the window’s width. 
+	# Pressing right will grow the window’s width.
+	# Pressing up will shrink the window’s height.
+	# Pressing down will grow the window’s height.
+	bindsym Left resize shrink width 10 px or 10 ppt 
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt 
+	bindsym Right resize grow width 10 px or 10 ppt 
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -96,7 +100,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #FFFFFF #285577 #FFFFFF #000000   #222222
+client.focused          #FFFFFF #285577 #FFFFFF #000000   #DDDDDD
 client.focused_inactive #333333 #5F676A #FFFFFF #000000   #000000
 client.unfocused        #333333 #222222 #888888 #000000   #000000
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
@@ -105,19 +109,20 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
 	colors {
-        background #000000
+        background #000000B3
         statusline #ffffff
         separator #666666
         
-        focused_workspace  #000000 #000000 #FFFFFF
-    	active_workspace   #000000 #000000 #FFFFFF
-    	inactive_workspace #000000 #000000 #888888
-    	urgent_workspace   #000000 #000000 #FF0000
-    	binding_mode       #000000 #000000 #FF0000
+        focused_workspace  #000000b3 #000000b3 #FFFFFF
+    	active_workspace   #000000b3 #000000b3 #FFFFFF
+    	inactive_workspace #000000b3 #000000b3 #888888
+    	urgent_workspace   #000000b3 #000000b3 #FF0000
+    	binding_mode       #000000b3 #000000b3 #FF0000
     }
 	position top
 	separator_symbol " | "
-	status_command i3status -c ~/.config/i3/i3status.conf # | ~/i3spotifystatus/pystatus.py
+	i3bar_command i3bar -t
+	status_command py3status #| ~/i3spotifystatus/pystatus.py
 	strip_workspace_numbers no
 }
 
@@ -147,7 +152,16 @@ assign [instance=code] $ws3
 for_window [class="Spotify"] move to workspace $ws4
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -theme Monokai -font "hack 36" -lines 6 -show run -display-run ""
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-shit/rofi_config.rasi
+
+# compton
+exec_always compton --backend glx --blur-method kawase --blur-background --blur-strength 4
+
+# i3-gaps
+for_window [class=".*"] border pixel 2
+gaps inner 6
+smart_gaps on
+smart_borders on
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -158,17 +172,17 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Volume keys
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -q sset -q Speaker unmute ; amixer -q sset Master toggle"
+bindsym XF86AudioMute exec "amixer -q sset Speaker unmute ; amixer -q sset Headphone unmutHeadphone unmute; amixer -q sset Master toggle"
 
 # Alt+. for play
 bindcode $mod+60 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause" 
 # Alt+Shift+. for next
-bindcode $mod+Shift+59 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
+bindcode $mod+Shift+60 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
 # Alt+Shift+, for prev
-bindcode $mod+Shift+60 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2
+bindcode $mod+Shift+59 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 
 # shortcuts for commonly used programs
-bindsym $mod+Shift+f exec xterm -e mc -b
+bindsym $mod+Shift+f exec xterm -e ranger
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+Shift+s exec spotify
 bindsym $mod+Shift+c exec code
