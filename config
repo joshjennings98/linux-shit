@@ -46,7 +46,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # i3-workspace-names-daemon
-exec_always --no-startup-id exec i3-workspace-names-daemon -d '  ' 
+exec_always --no-startup-id exec i3-workspace-names-daemon -d '  ' -u 
 
 # custom names for workspaces
 set $ws1 "&#xf015;  home"

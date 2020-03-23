@@ -12,5 +12,6 @@
     "feh" : "images",
     "blueman" : "bluetooth",
     "KeePass2" : "lock",
-    "ranger" : "folder"
+    "ranger" : "folder",
+    "vim" : "edit"
 }
