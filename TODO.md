@@ -36,6 +36,7 @@
 * brightnessctl
 * steam
 * discord
+* i3-workspace-names-daemon
 
 ## Other stuff
 
