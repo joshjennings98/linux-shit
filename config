@@ -51,7 +51,7 @@ set $ws2 "&#xf269;  web"
 set $ws3 "&#xf121;  code"
 set $ws4 "&#xf1bc;  spotify"
 set $ws5 "&#xf11b;  games"
-set $ws6 "&#xf120;  ws6"
+set $ws6 "&#xf086;  discord"
 set $ws7 "&#xf120;  ws7"
 set $ws8 "&#xf120;  ws8"
 set $ws9 "&#xf120;  ws9"
@@ -124,6 +124,7 @@ bar {
 	i3bar_command i3bar -t
 	status_command py3status #| ~/i3spotifystatus/pystatus.py
 	strip_workspace_numbers no
+	tray_output none
 }
 
 # reload bashrc, xresources, etc.
