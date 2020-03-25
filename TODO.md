@@ -37,6 +37,7 @@
 * steam
 * discord
 * i3-workspace-names-daemon
+* w3m (w3m-img on ubuntu) for ranger previews
 
 ## Other stuff
 
