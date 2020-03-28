@@ -60,7 +60,7 @@ then
 		sudo pip install i3-workspace-names-daemon
 
 		# Install stuff I like to have
-		sudo apt-get install vlc firefox htop ranger keepass2 veracrypt rdfind steam pinta ncdu -y # Misc Programs
+		sudo apt-get install ghc vlc firefox htop ranger keepass2 veracrypt rdfind steam pinta ncdu -y # Misc Programs
 		sudo apt-get install nmtui blueman brightnessctl -y # QoL programs
 
 		# Install spotify
@@ -142,7 +142,7 @@ then
 		sudo pip install i3-workspace-names-daemon
 
 		# Install stuff I like to have
-		sudo pacman -S vlc firefox htop ranger keepass veracrypt steam pinta ncdu -y # Misc Programs
+		sudo pacman -S vlc firefox htop ranger ghc keepass veracrypt steam pinta ncdu -y # Misc Programs
 		sudo pacman -S blueman brightnessctl -y # QoL programs
 
 		# Install vscode
