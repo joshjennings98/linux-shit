@@ -36,7 +36,7 @@ then
 		sudo apt-get upgrade -y
 
 		# Install python stuff
-		sudo apt-get install python3 pip3 -y
+		sudo apt-get install python3 python3-pip -y
 		
 		# Install utilities and stuff
 		sudo apt-get install apt-transport-https -y
@@ -48,9 +48,11 @@ then
 		# Install compton stuff
 		sudo apt-get install libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxext-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-core-dev x11-utils libconfig-dev libdrm-dev libgl-dev libdbus-1-3 asciidoc -y
 		git clone https://github.com/tryone144/compton ~/
+		cd ~/compton
 		sudo make
 		sudo make docs
 		sudo make install
+		cd ~/linux-stuff
 
 		# Install i3 stuff
 		sudo apt-get install i3 i3status dmenu i3lock xbacklight feh rofi py3status -y
@@ -73,12 +75,16 @@ then
 		sudo apt-get update && sudo apt-get install code -y
 
 		# Install discord
+		cd ~/Downloads
 		wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 		sudo dpkg -i ~/discord.deb
+		cd ~/linux-stuff
 
 		# Install minecraft
+		cd ~/Downloads
 		wget -o ~/Minecraft.deb https://launcher.mojang.com/download/Minecraft.deb
 		sudo dpkg -i ~/Minecraft.deb
+		cd ~/linux-stuff
 
 		# Install godot using snap :(
 		sudo snap install godot --classic
@@ -88,9 +94,11 @@ then
 		then
 			
 			# Add package repositories
+			cd ~/Downloads
 			wget -qO - https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc \ | sudo apt-key add -
 			echo "deb [arch=amd64] https://pkg.surfacelinux.com/debian release main" | sudo tee /etc/apt/sources.list.d/linux-surface.list
 			sudo apt-get update && sudo apt-get install linux-headers-surface linux-image-surface linux-libc-dev-surface surface-ipts-firmware linux-surface-secureboot-mok libwacom-surface
+			cd ~/linux-stuff
 
 		fi
 
@@ -104,22 +112,62 @@ then
 		
 		# Install yay
 		git clone https://aur.archlinux.org/yay.git ~/
-		cd yay
+		cd ~/yay
 		makepkg -si
-		cd ..
+		cd ~/linux-stuff
+
+		# Install stuff I like to have
+		sudo pacman -S py3status --noconfirm
+
+		# Install python stuff
+		sudo pacman -S python python-pip --noconfirm
+		
+		# Install utilities and stuff
+		sudo pacman -S exfat-utils --noconfirm # exfat stuff
+		sudo pacman -S git curl wget sed --noconfirm
+		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick ttf-font-awesome --noconfirm # Prerequisit/Useful Stuff
+		sudo pacman -S autoconf autogen libusb --noconfirm
+
+		# Install compton stuff
+		sudo pacman -S libx11 libxcomposite libxdamage libxfixes libxext libxrender libxrandr libxinerama pkgconf make xorgproto xorg-xwininfo xorg-xprop pcre libconfig libdrm glib2 dbus asciidoc --noconfirm
+		git clone https://github.com/tryone144/compton ~/
+		cd ~/compton
+		sudo make
+		sudo make docs
+		sudo make install
+		cd ~/linux-stuff
+
+		# Install i3 stuff
+		sudo pacman -S i3 xorg-xbacklight feh rofi py3status --noconfirm
+		sudo pip install i3-workspace-names-daemon
+
+		# Install stuff I like to have
+		sudo pacman -S vlc firefox htop ranger keepass veracrypt steam pinta ncdu -y # Misc Programs
+		sudo pacman -S blueman brightnessctl -y # QoL programs
+
+		# Install vscode
+		sudo pacman -S code
+
+		# Install discord
+		sudo pacman -S discord
+
+		# Install AUR stuff
+		yay -S rdfind spotify minecraft-launcher godot
 
 		if [ "$3" == "surface" ] # Set up kernel patches for surface (arch version)
 
 		then
 			
 			# Add package repositories
+			cd ~/Downloads
 			wget -qO - https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc \ | sudo pacman-key --add -
 			sudo pacman-key --finger 56C464BAAC421453
 			sudo pacman-key --lsign-key 56C464BAAC421453
 			echo '[linux-surface]' >> /etc/pacman.conf
 			echo 'Server = https://pkg.surfacelinux.com/arch/' >> /etc/pacman.conf
 			sudo pacman -S linux-surface-headers linux-surface surface-ipts-firmware linux-surface-secureboot-mok			
-		
+			cd ~/linux-shit
+
 		fi
 
 	fi
@@ -131,7 +179,7 @@ then
 	wget http://installer.jdownloader.org/JD2SilentSetup_x64.sh
 	chmod +x JD2SilentSetup_x64.sh
 	./JD2SilentSetup_x64.sh
-	cd ~/
+	cd ~/linux-shit
 
 	# Move all the configuration files to the correct places
 
