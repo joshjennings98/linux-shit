@@ -40,6 +40,7 @@
 * w3m (w3m-img on ubuntu) for ranger previews
 * autoconf autogen
 * libusb-dev
+* jq
 
 ## Other stuff
 

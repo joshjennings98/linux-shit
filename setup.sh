@@ -1,86 +1,199 @@
-# Stuff for setting up a new linux system
+# Script for setting my stuff up on a new linux computer
 
-# To Do: Need to add stuff for setting up Visual Studio Code extensions
+# By Josh Jennings
 
-# Move .bashrc and .Xresources
-cp -f .bashrc ~/
-cp -f .Xresources ~/
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]
 
-# Move i3 stuff
-mkdir ~/.config/i3
-cp -f i3status.conf ~/.config/i3/
-cp -f config ~/.config/i3/
-
-# Move spotify bar stuff
-cp -rf i3spotifystatus ~/
-
-# Set up wallpapers
-mkdir ~/wallpapers
-cp -f wallpapers/amberchronicles.png ~/wallpapers/
-cp -f wallpapers/wayofkings.png ~/wallpapers/
-
-# Stuff for surface
-if [ "$1" == "surface" ]
 then
-	# Set up Jakeday kernel patch for surface	
-	sudo apt install git curl wget sed
-	git clone --depth 1 https://github.com/jakeday/linux-surface.git ~/linux-surface
-	cd ~/linux-surface
-	sudo sh setup.sh
+	
+	echo " "
+	echo "Set up a new linux install."
+	echo " "
+	echo "usage: sudo sh setup.sh [-h|-i] [arch/ubuntu] [surface]"
+	echo " "
+	echo "  -h, --help	 list the help information."
+	echo "  -i, --install	 install programs for [ubuntu|arch] and optionally [surface] patches."
+	echo " "
+
 fi
 
-# Install useful prerequisite stuff
-sudo apt-get update	
-sudo apt-get upgrade
-sudo add-apt-repository universe
-sudo apt-get update
-sudo apt install exfat-fuse exfat-utils -y # exfat stuff
-sudo apt-get install software-properties-common -y # ppa shit
-sudo apt-get install apt-transport-https -y
-sudo atp-get update
+if [ "$1" == "-i" ] || [ "$1" == "--install" ]
 
-# veracrypt stuff
-sudo add-apt-repository ppa:unit193/encryption # veracrypt ppa
-sudo apt-get update
+then
 
-# Replace this with something better
-# Install F# dev stuff (remember to do load project first in monodevelop to fix packages (or work out a way to restore packages using vscode)) 
-# sudo apt install apt-transport-https dirmngr -y # monodevelop part 1 (need monodevelop to restore files)
-# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF # monodevelop part 2
-# echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list # monodevelop part 3
-# sudo apt update
-# wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb #.Net Stuff part 1
-# sudo dpkg -i packages-microsoft-prod.deb #.Net Stuff part 2
-# sudo apt-get install dotnet-sdk-3.1 -y #.Net Stuff part 3
-# sudo apt install fsharp -y # F# Stuff
-# sudo apt install monodevelop -y # Need monodevelop
+	if [ "$2" == "ubuntu" ] 
 
-# Install i3 stuff
-sudo apt install i3 i3status dmenu i3lock xbacklight feh conky rofi -y
-xrandr --dpi 180 # Set up dpi scaling for i3
+	then
+		
+		# Install ubuntu packages
+		
+		# Add ppa stuff and repositories
+		sudo apt-get install software-properties-common -y # ppa shit
+		sudo add-apt-repository universe -y
+		sudo add-apt-repository multiverse -y
+		sudo add-apt-repository ppa:unit193/encryption -y # veracrypt ppa
+		sudo apt-get update
+		sudo apt-get upgrade -y
 
-# Install stuff I like to have
-sudo apt-get install network-manager ffmpeg scrot xterm alsamixer vim imagemagick fonts-font-awesome snap -y # Prerequisit/Useful Stuff
-sudo apt-get install vlc firefox youtube-dl htop ranger keepass2 veracrypt rdfind pinta ncdu -y # Misc Programs
-sudo apt-get install nmtui blueman brightnessctl -y # QoL programs
-# sudo apt-get install vagrant virtualbox -y # fyp stuff
-sudo snap install code --classic # vscode requires snap
-sudo snap install spotify # spotify requires snap
+		# Install python stuff
+		sudo apt-get install python3 pip3 -y
+		
+		# Install utilities and stuff
+		sudo apt-get install apt-transport-https -y
+		sudo apt-get install exfat-fuse exfat-utils -y # exfat stuff
+		sudo apt-get install git curl wget sed -y
+		sudo apt-get install network-manager dbus w3m-img ffmpeg scrot xterm alsamixer vim imagemagick fonts-font-awesome snap -y # Prerequisit/Useful Stuff
+		sudo apt-get install autoconf autogen libusb-dev -y
 
-# Install JDownloader2
-cd ~/Downloads
-wget http://installer.jdownloader.org/JD2SilentSetup_x64.sh
-chmod +x JD2SilentSetup_x64.sh
-./JD2SilentSetup_x64.sh
-cd ~/
+		# Install compton stuff
+		sudo apt-get install libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxext-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-core-dev x11-utils libconfig-dev libdrm-dev libgl-dev libdbus-1-3 asciidoc -y
+		git clone https://github.com/tryone144/compton ~/
+		sudo make
+		sudo make docs
+		sudo make install
 
-# Set up fallout grub (NOTE, MOVE REPO TO MY GITHUB AND CHECK FOR VIRUSES ETC.)
-# wget -O - https://github.com/shvchk/fallout-grub-theme/raw/master/install.sh | bash 
+		# Install i3 stuff
+		sudo apt-get install i3 i3status dmenu i3lock xbacklight feh rofi py3status -y
+		sudo apt-get install i3-gaps -y
+		sudo pip install i3-workspace-names-daemon
+
+		# Install stuff I like to have
+		sudo apt-get install vlc firefox htop ranger keepass2 veracrypt rdfind steam pinta ncdu -y # Misc Programs
+		sudo apt-get install nmtui blueman brightnessctl -y # QoL programs
+
+		# Install spotify
+		curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
+		echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+		sudo apt-get update && sudo apt-get install spotify-client -y
+
+		# Install vscode
+		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+		sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+		sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+		sudo apt-get update && sudo apt-get install code -y
+
+		# Install discord
+		wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+		sudo dpkg -i ~/discord.deb
+
+		# Install minecraft
+		wget -o ~/Minecraft.deb https://launcher.mojang.com/download/Minecraft.deb
+		sudo dpkg -i ~/Minecraft.deb
+
+		# Install godot using snap :(
+		sudo snap install godot --classic
+
+		if [ "$3" == "surface" ] # Set up kernel patches for surface (ubuntu version)
+	
+		then
+			
+			# Add package repositories
+			wget -qO - https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc \ | sudo apt-key add -
+			echo "deb [arch=amd64] https://pkg.surfacelinux.com/debian release main" | sudo tee /etc/apt/sources.list.d/linux-surface.list
+			sudo apt-get update && sudo apt-get install linux-headers-surface linux-image-surface linux-libc-dev-surface surface-ipts-firmware linux-surface-secureboot-mok libwacom-surface
+
+		fi
+
+	fi
+
+	if [ "$2" == "arch" ]
+
+	then
+		
+		# Install arch packages
+		
+		# Install yay
+		git clone https://aur.archlinux.org/yay.git ~/
+		cd yay
+		makepkg -si
+		cd ..
+
+		if [ "$3" == "surface" ] # Set up kernel patches for surface (arch version)
+
+		then
+			
+			# Add package repositories
+			wget -qO - https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc \ | sudo pacman-key --add -
+			sudo pacman-key --finger 56C464BAAC421453
+			sudo pacman-key --lsign-key 56C464BAAC421453
+			echo '[linux-surface]' >> /etc/pacman.conf
+			echo 'Server = https://pkg.surfacelinux.com/arch/' >> /etc/pacman.conf
+			sudo pacman -S linux-surface-headers linux-surface surface-ipts-firmware linux-surface-secureboot-mok			
+		
+		fi
+
+	fi
+
+	# Install non distro specific packages
+
+	# Install JDownloader2
+	cd ~/Downloads
+	wget http://installer.jdownloader.org/JD2SilentSetup_x64.sh
+	chmod +x JD2SilentSetup_x64.sh
+	./JD2SilentSetup_x64.sh
+	cd ~/
+
+	# Move all the configuration files to the correct places
+
+	# Create system files
+	cp -f system\ stuff/.bashrc ~/
+	source ~/.bashrc
+	cp -f system\ stuff/.Xresources ~/
+	cp -f system\ stuff/compton.conf /etc/xdg/
+
+	# Move ranger stuff
+	mkdir ~/.config/ranger
+	cp -f ranger/rc.conf ~/.config/ranger/
+	cp -f ranger/rifle.conf ~/.config/ranger/
+	cp -f ranger/scope.sh ~/.config/ranger/
+
+	# Move i3 stuff
+	mkdir ~/.config/i3
+	cp -f i3/i3status.conf ~/.config/i3/
+	cp -f i3/config ~/.config/i3/
+	cp -f i3/app-icons.json ~/.config/i3/
+
+	# Move rofi config
+	mkdir ~/rofi
+	cp -f rofi/rofi_config.rasi ~/rofi/
+
+	# Set up wallpapers
+	mkdir ~/wallpapers
+	cp -f wallpapers/nebula.jpg ~/wallpapers/
+
+	# Set up vscode
+	codeextensions -l vscode/vscodeextensions.txt
+	cp -f vscode/vscode\ settings.json ~/.config/Code/User/
+	mv ~/.config/Code/User/vscode\ settings.json ~/.config/Code/User/settings.json
+
+	# Make scripts executable
+	chmod +x ~/linux-stuff/scripts/flashkb.sh
+	chmod +x ~/linux-stuff/scripts/codeextensions.sh
+	chmod +x ~/linux-stuff/scripts/swapscreens.sh
+
+fi
 
 # Reload .bashrc and stuff
 source ~/.bashrc
 xrdb ~/.Xresources
 
-# Reboot the system
-# echo "Rebooting the system."
-# reboot
+# Warning about surface-linux post install stuff
+if [ "$3" == "surface" ]
+
+then
+	echo " "
+	echo "NOTES:"
+	echo "- NEED TO CHECK IF BOOTLOADER HAS BOOTED INTO THE CORECT KERNEL SINCE USING SURFACE-LINUX"
+	echo "- MIGHT NEED TO LOOK AT POST INSTALL STUFF HERE FOR SURFACE-LINUX https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup"
+	echo " "
+fi
+
+# Reboot
+echo "Everything should be installed."
+read -r -p "Would you like to reboot now? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    reboot
+else
+    echo "Remember to reboot soon to apply changes."
+fi

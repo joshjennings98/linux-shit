@@ -1,8 +1,3 @@
-alias ls='ls --color=auto' # So ls is coloured correctly
-
-flash_keyboard()
-{
-
 if [ "$1" == "-h" ] || [ "$1" == "--help" ] 
 
 then
@@ -61,60 +56,3 @@ then
 	sudo dfu-programmer atmega32u4 flash $2
 	sudo dfu-programmer atmega32u4 reset
 fi
-
-}
-
-code_extensions()
-{
-	if [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ "$#" -ne 2 ]
-
-	then
-		echo " "
-		echo "Save and load Visual Studio Code extensions."
-		echo " "
-		echo "usage: codeextensions [-s|-l|-h] [src/dst]"
-		echo " "
-		echo "  -h, --help	 list the help information."
-		echo "  -s, --save	 save vscode extensions to [dst]."
-		echo "  -l, --load	 install vscode extensions from [src]"
-		echo " "
-	fi
-
-	if [ "$1" == "-s" ] || [ "$1" == "--save" ] && [ "$#" -eq 2 ]
-
-	then
-		rm $2
-		code --list-extensions >> $2
-		echo "Saved list of vscode extensions to $2."
-	fi
-
-	if [ "$1" == "-l" ] || [ "$1" == "--load" ] && [ "$#" -eq 2 ]
-
-	then
-		cat $2 | xargs -n 1 code --install-extension
-		echo " "
-		echo "Installed all vscode extensions specified in $2."
-	fi
-}
-
-# Aliases for directories
-alias docs='cd ~/Documents/ && ls'
-alias down='cd ~/Downloads/ && ls'
-alias home='cd ~/ && ls'
-alias ..='cd ..' # cd back one level
-
-# Aliases for commands
-alias dual='xrandr --output HDMI-1 --auto --right-of eDP1' # need to check this is right and update if necessary
-alias dpidual='xrandr --dpi 180' # set dpi for surface and 1080p monitor
-alias dpisingle='xrandr --dpi 220' # set dpi for surface only
-alias reloadbashrc='source ~/.bashrc' # reload bashrc
-alias resetwifi='sudo /etc/init.d/network-manager restart' #reset wifi cause it breaks sometimes
-alias p='python3' # python alias
-alias pingtest='ping 8.8.8.8 -c 4' # ping
-alias flashkb='flash_keyboard' # flash keyboard command
-alias la='ls -aF' # list all
-alias ll='ls -lhFBA' # list all in a list with human readable stuff, extensions, no backup files, and no .. .
-alias lr='ls -R' # list EVERYTHING (recursive ls)
-alias blset='sudo brightnessctl set' # Set brightness
-alias codeextensions='code_extensions'
-alias lsalias="grep -in --color -e '^alias\s+*' ~/.bashrc | sed 's/alias //' | grep --colour -e ':[a-z][a-z0-9]*'" # list all aliases"

@@ -46,7 +46,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # i3-workspace-names-daemon
-exec_always --no-startup-id exec i3-workspace-names-daemon -d '  ' -u 
+exec_always --no-startup-id exec i3-workspace-names-daemon -d '  ' -u
 
 # custom names for workspaces
 set $ws1 "&#xf015;  home"
@@ -156,7 +156,7 @@ bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -bl
 # for_window [class="Spotify"] move to workspace $ws4
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-shit/rofi_config.rasi
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-stuff/rofi/rofi_config.rasi
 
 # compton
 exec_always compton --backend glx --blur-method kawase --blur-background --blur-strength 4
@@ -188,5 +188,6 @@ bindcode $mod+Shift+59 exec "dbus-send --print-reply --dest=org.mpris.MediaPlaye
 # shortcuts for commonly used programs
 bindsym $mod+Shift+f exec xterm -e ranger
 bindsym $mod+Shift+b exec firefox
-bindsym $mod+Shift+s exec spotify
+bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+c exec code
+bindsym $mod+Shift+s exec ~/linux-stuff/scripts/swapscreens.sh
