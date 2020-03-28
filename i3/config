@@ -187,6 +187,7 @@ bindcode $mod+Shift+59 exec "dbus-send --print-reply --dest=org.mpris.MediaPlaye
 
 # shortcuts for commonly used programs
 bindsym $mod+Shift+f exec xterm -e ranger
+bindsym $mod+Shift+a exec xterm -e alsamixer
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+c exec code
