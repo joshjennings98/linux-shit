@@ -1,15 +1,9 @@
 alias ls='ls --color=auto' # So ls is coloured correctly
 
-batch_rename()
-{
-	# batch rename all files with the file extension $1
-	for f in *.$1; do mv -n "$f" "${f/*/$RANDOM$RANDOM.$1}"; done
-}
-
 flash_keyboard()
 {
 
-if [ "$1" == "-h" ] || [ "$1" == "--help" ] || ["$1" == ""]
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] 
 
 then
 	echo " "
@@ -23,7 +17,7 @@ then
 	echo " "
 fi
 
-if [ "$1" == "-i" ] || [ "$1" == "--install" ]
+if [ "$1" == "-i" ] || [ "$1" == "--install" ] && [ "$#" -eq 1 ]
 
 then
 	git clone https://github.com/dfu-programmer/dfu-programmer.git # get the files for the dfu programmer
@@ -53,14 +47,14 @@ then
 	# it is not. You can select libusb using --disable-libusb_1_0. If
 	# usb library is not available try getting libusb-1.0-0-dev
 
-	make                    # build dfu-programmer
+	sudo make                    # build dfu-programmer
 
 	# Become root if necessary
 
-	make install            # install dfu-programmer
+	sudo make install            # install dfu-programmer
 fi
 
-if [ "$1" == "-f" ] || [ "$1" == "--flash" ]
+if [ "$1" == "-f" ] || [ "$1" == "--flash" ] && [ "$#" -eq 2 ]
 
 then
 	sudo dfu-programmer atmega32u4 erase
@@ -70,64 +64,57 @@ fi
 
 }
 
-maze()
+code_extensions()
 {
-if [ "$1" == "-i" ] 
+	if [ "$1" == "-h" ] || [ "$1" == "--help" ] || [ "$#" -ne 2 ]
 
-then 
-	cd ~
-	git clone https://github.com/joshjennings98/maze-py
-	cd maze-py
-	python3 maze.py
-fi
+	then
+		echo " "
+		echo "Save and load Visual Studio Code extensions."
+		echo " "
+		echo "usage: codeextensions [-s|-l|-h] [src/dst]"
+		echo " "
+		echo "  -h, --help	 list the help information."
+		echo "  -s, --save	 save vscode extensions to [dst]."
+		echo "  -l, --load	 install vscode extensions from [src]"
+		echo " "
+	fi
 
-if [ "$1" == "-r" ]
+	if [ "$1" == "-s" ] || [ "$1" == "--save" ] && [ "$#" -eq 2 ]
 
-then
-	cd ~/maze-py
-	python3 maze.py $2 $3
-fi
+	then
+		rm $2
+		code --list-extensions >> $2
+		echo "Saved list of vscode extensions to $2."
+	fi
 
-if [ "$1" == "-h" ]
+	if [ "$1" == "-l" ] || [ "$1" == "--load" ] && [ "$#" -eq 2 ]
 
-then
-	echo " "
-	echo "maze-py"
-	echo " "
-	echo " -i	Installs maze-py"
-	echo " -r	Runs maze-py"
-	echo " -h	Shows help information"
-	echo " "
-fi
+	then
+		cat $2 | xargs -n 1 code --install-extension
+		echo " "
+		echo "Installed all vscode extensions specified in $2."
+	fi
 }
-
-
-
-alias maze='maze' # my shitty maze thing
 
 # Aliases for directories
 alias docs='cd ~/Documents/ && ls'
 alias down='cd ~/Downloads/ && ls'
 alias home='cd ~/ && ls'
+alias ..='cd ..' # cd back one level
 
 # Aliases for commands
-alias dual='xrandr --output eDP1 --auto --output HDMI1' # need to check this is right and update if necessary
-alias dpidual='xrandr --dpi 180'
-alias dpisingle='xrandr --dpi 220'
+alias dual='xrandr --output HDMI-1 --auto --right-of eDP1' # need to check this is right and update if necessary
+alias dpidual='xrandr --dpi 180' # set dpi for surface and 1080p monitor
+alias dpisingle='xrandr --dpi 220' # set dpi for surface only
 alias reloadbashrc='source ~/.bashrc' # reload bashrc
 alias resetwifi='sudo /etc/init.d/network-manager restart' #reset wifi cause it breaks sometimes
 alias p='python3' # python alias
 alias pingtest='ping 8.8.8.8 -c 4' # ping
-alias ..='cd ..' # cd back one level
 alias flashkb='flash_keyboard' # flash keyboard command
 alias la='ls -aF' # list all
 alias ll='ls -lhFBA' # list all in a list with human readable stuff, extensions, no backup files, and no .. .
 alias lr='ls -R' # list EVERYTHING (recursive ls)
 alias blset='sudo brightnessctl set' # Set brightness
-alias batchrename='batch_rename' # Batch rename file extension (broken)
-alias lsalias="grep -in --color -e '^alias\s+*' ~/.bashrc | sed 's/alias //' | grep --colour -e ':[a-z][a-z0-9]*'" # list all aliases
-
-
-
-
-
+alias codeextensions='code_extensions'
+alias lsalias="grep -in --color -e '^alias\s+*' ~/.bashrc | sed 's/alias //' | grep --colour -e ':[a-z][a-z0-9]*'" # list all aliases"

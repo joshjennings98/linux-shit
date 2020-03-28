@@ -1,0 +1,4 @@
+eamodio.gitlens
+ms-python.python
+yycalm.linecount
+yzhang.markdown-all-in-one

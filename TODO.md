@@ -20,7 +20,7 @@
 * VLC
 * VeraCrypt
 * exfat stuff
-* mono stuff (monogame, mono, shit for VScode)
+* godot (and shit for VScode)
 * i3 i3status i3lock rofi
 * i3-gaps
 * xbacklight
@@ -38,6 +38,8 @@
 * discord
 * i3-workspace-names-daemon
 * w3m (w3m-img on ubuntu) for ranger previews
+* autoconf autogen
+* libusb-dev
 
 ## Other stuff
 
