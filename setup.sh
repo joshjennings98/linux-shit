@@ -57,7 +57,7 @@ then
 		# Install i3 stuff
 		sudo apt-get install i3 i3status dmenu i3lock xbacklight feh rofi py3status -y
 		sudo apt-get install i3-gaps -y
-		sudo pip install i3-workspace-names-daemon
+		sudo pip3 install i3-workspace-names-daemon
 
 		# Install stuff I like to have
 		sudo apt-get install ghc vlc firefox htop ranger keepass2 veracrypt rdfind steam pinta ncdu -y # Misc Programs
