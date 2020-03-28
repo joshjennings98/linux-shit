@@ -64,15 +64,19 @@ then
 		sudo apt-get install nmtui blueman brightnessctl -y # QoL programs
 
 		# Install spotify
+		cd ~/Downloads
 		curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
 		echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 		sudo apt-get update && sudo apt-get install spotify-client -y
+		cd ~/linux-stuff
 
 		# Install vscode
+		cd ~/Downloads
 		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 		sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
 		sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 		sudo apt-get update && sudo apt-get install code -y
+		cd ~/linux-stuff
 
 		# Install discord
 		cd ~/Downloads
@@ -219,29 +223,37 @@ then
 	chmod +x ~/linux-stuff/scripts/codeextensions.sh
 	chmod +x ~/linux-stuff/scripts/swapscreens.sh
 
-fi
+	# Reload .bashrc and stuff
+	source ~/.bashrc
+	xrdb ~/.Xresources
 
-# Reload .bashrc and stuff
-source ~/.bashrc
-xrdb ~/.Xresources
+	# Warning about surface-linux post install stuff
+	if [ "$3" == "surface" ]
 
-# Warning about surface-linux post install stuff
-if [ "$3" == "surface" ]
+	then
 
-then
-	echo " "
-	echo "NOTES:"
-	echo "- NEED TO CHECK IF BOOTLOADER HAS BOOTED INTO THE CORECT KERNEL SINCE USING SURFACE-LINUX"
-	echo "- MIGHT NEED TO LOOK AT POST INSTALL STUFF HERE FOR SURFACE-LINUX https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup"
-	echo " "
-fi
+		echo " "
+		echo "NOTES:"
+		echo "- NEED TO CHECK IF BOOTLOADER HAS BOOTED INTO THE CORECT KERNEL SINCE USING SURFACE-LINUX"
+		echo "- MIGHT NEED TO LOOK AT POST INSTALL STUFF HERE FOR SURFACE-LINUX https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup"
+		echo " "
 
-# Reboot
-echo "Everything should be installed."
-read -r -p "Would you like to reboot now? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-    reboot
-else
-    echo "Remember to reboot soon to apply changes."
+	fi
+
+	# Reboot
+	echo "Everything should be installed."
+	read -r -p "Would you like to reboot now? [y/N] " response
+	
+	if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+
+	then
+
+		reboot
+
+	else
+
+		echo "Remember to reboot soon to apply changes."
+
+	fi
+
 fi
