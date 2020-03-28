@@ -1,20 +1,15 @@
-# Josh's Useful Linux Shit
+# Josh's Useful Linux Stuff
 
-This repo contains useful linux stuff such as installation scripts and my `.bashrc`.
+This repo contains useful linux stuff as well as an install script for setting up new computers with the stuff I like to have.
 
 ## Usage
 
-To set up a new linux computer clone this repo, `cd` into it run:
+To set up a new linux computer run:
 ```bash
-sudo chmod +x ./setup.sh
-./setup.sh <surface>
+git clone https://github.com/joshjennings98/linux-stuff
+cd linux-stuff
+sh setup.sh [flag] [distro] [surface]
 ```
-
-* `<surface> = surface | <leave empty>` is whether to install the [Jakeday Kernel](https://github.com/jakeday/linux-surface) Patch for the Surface series of computers.
-
-## Notes: 
-* Not been properly tested so might break.
-
-## To Do
-* Move long .bashrc stuff to a bash file. [Tutorial](https://medium.com/devnetwork/how-to-create-your-own-custom-terminal-commands-c5008782a78e).
-* Add set up for vscode extensions ([something similar to this](https://www.peerlator.com/blog/MyDotfilesPart5/)).
+* **Flags:** `-i` for install, `-h` for help.
+* **Distro:** `arch` for Arch Linux, `ubuntu` for Ubuntu.
+* **Surface:** `surface` to install `linux-surface` kernel patches, leave black if not needed.
