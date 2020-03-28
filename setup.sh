@@ -42,7 +42,7 @@ then
 		sudo apt-get install apt-transport-https -y
 		sudo apt-get install exfat-fuse exfat-utils -y # exfat stuff
 		sudo apt-get install git curl wget sed -y
-		sudo apt-get install network-manager jq dbus w3m-img ffmpeg scrot xterm alsamixer vim imagemagick fonts-font-awesome snap -y # Prerequisit/Useful Stuff
+		sudo apt-get install network-manager jq dbus w3m-img ffmpeg scrot xterm alsamixer gdebi-core vim imagemagick fonts-font-awesome snap -y # Prerequisit/Useful Stuff
 		sudo apt-get install autoconf autogen libusb-dev -y
 
 		# Install compton stuff
@@ -83,7 +83,7 @@ then
 		# Install minecraft
 		cd ~/Downloads
 		wget -o ~/Minecraft.deb https://launcher.mojang.com/download/Minecraft.deb
-		sudo dpkg -i ~/Minecraft.deb
+		sudo gdebi ~/Minecraft.deb
 		cd ~/linux-stuff
 
 		# Install godot using snap :(
