@@ -1,8 +1,8 @@
-# Josh's Useful Linux Stuff
+# My Useful Linux Stuff
 
-This repo contains useful linux stuff as well as an install script for setting up new computers with the stuff I like to have.
+This repo contains my useful linux stuff like my `.bashrc` and other scripts/config files. It also contains an install script for setting up new computers with the stuff I like to have.
 
-## Usage
+## Install Script Usage
 
 To set up a new linux computer run:
 ```bash
