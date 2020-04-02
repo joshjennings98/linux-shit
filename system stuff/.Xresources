@@ -1,6 +1,6 @@
 ! font
-*.font:     xft:bitstream vera sans mono:size=16:antialias=true
-*.boldFont: xft:bitstream vera sans mono:bold:size=16:antialias=true
+*.font:     xft:bitstream vera sans mono:size=14:antialias=true
+*.boldFont: xft:bitstream vera sans mono:bold:size=14:antialias=true
 
 ! special
 *.foreground:   #c5c8c6
