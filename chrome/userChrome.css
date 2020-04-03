@@ -20,7 +20,7 @@ pointer-events: auto !important;
 
 #nav-bar {
     height: 0px;
-    margin-top: -18px ;
+    margin-top: -20px ;
     opacity: 0;
     overflow: hidden;
 }
