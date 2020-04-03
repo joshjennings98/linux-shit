@@ -246,10 +246,10 @@ then
 	# Emphasise some important stuff (like things that need to be done manually)
 	echo "- NEED TO MANUALLY MOVE USERCHOME.CSS TO THE CORRECT PLACE TO MAKE FIREFOX LOOK COOL."
 	echo "- SET THE FOLLOWING IN ABOUT.CONFIG:"
-	echo "	toolkit.legacyUserProfileCustomizations.stylesheets: true"
-	echo "	full-screen-api.ignore-widgets: true"
-	echo "	browser.tabs.drawInTitlebar: false"
-	echo "	ALSO NEED TO MANUALLY MOVE + BUTTON FROM TAB BAR."
+	echo "    toolkit.legacyUserProfileCustomizations.stylesheets: true"
+	echo "    full-screen-api.ignore-widgets: true"
+	echo "    browser.tabs.drawInTitlebar: false"
+	echo "    ALSO NEED TO MANUALLY MOVE + BUTTON FROM TAB BAR."
 	echo " "
 
 	# Reboot
