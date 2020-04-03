@@ -228,18 +228,29 @@ then
 	source ~/.bashrc
 	xrdb ~/.Xresources
 
+	# Prep notes stuff
+	echo " "
+	echo "NOTES:"
+
 	# Warning about surface-linux post install stuff
 	if [ "$3" == "surface" ]
 
 	then
 
-		echo " "
-		echo "NOTES:"
-		echo "- NEED TO CHECK IF BOOTLOADER HAS BOOTED INTO THE CORECT KERNEL SINCE USING SURFACE-LINUX"
-		echo "- MIGHT NEED TO LOOK AT POST INSTALL STUFF HERE FOR SURFACE-LINUX https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup"
+		echo "- NEED TO CHECK IF BOOTLOADER HAS BOOTED INTO THE CORECT KERNEL SINCE USING SURFACE-LINUX."
+		echo "- MIGHT NEED TO LOOK AT POST INSTALL STUFF HERE FOR SURFACE-LINUX https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup."
 		echo " "
 
 	fi
+
+	# Emphasise some important stuff (like things that need to be done manually)
+	echo "- NEED TO MANUALLY MOVE USERCHOME.CSS TO THE CORRECT PLACE TO MAKE FIREFOX LOOK COOL."
+	echo "- SET THE FOLLOWING IN ABOUT.CONFIG:"
+	echo "	toolkit.legacyUserProfileCustomizations.stylesheets: true"
+	echo "	full-screen-api.ignore-widgets: true"
+	echo "	browser.tabs.drawInTitlebar: false"
+	echo "	ALSO NEED TO MANUALLY MOVE + BUTTON FROM TAB BAR."
+	echo " "
 
 	# Reboot
 	echo "Everything should be installed."
