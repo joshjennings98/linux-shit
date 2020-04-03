@@ -48,18 +48,6 @@ bindsym $mod+space focus mode_toggle
 # i3-workspace-names-daemon
 exec_always --no-startup-id exec i3-workspace-names-daemon -d '  ' -u
 
-# custom names for workspaces
-set $ws1 "&#xf015;  home"
-set $ws2 "&#xf269;  web"
-set $ws3 "&#xf121;  code"
-set $ws4 "&#xf1bc;  spotify"
-set $ws5 "&#xf11b;  games"
-set $ws6 "&#xf086;  discord"
-set $ws7 "&#xf120;  ws7"
-set $ws8 "&#xf120;  ws8"
-set $ws9 "&#xf120;  ws9"
-set $ws10 "&#xf120;  ws10"
-
 # switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -150,11 +138,6 @@ bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -bl
 # lock screen (amber chronicles wallpaper)
 # bindsym $mod+l exec "i3lock -i ~/wallpapers/amberchronicles.jpg
 
-# Assign specific stuff to workspaces:
-# assign [class="Firefox"] $ws2
-# assign [instance=code] $ws3
-# for_window [class="Spotify"] move to workspace $ws4
-
 # start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-stuff/rofi/rofi_config.rasi
 
@@ -162,8 +145,8 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-stuff/rofi/ro
 exec_always compton --backend glx --blur-method kawase --blur-background --blur-strength 4
 
 # i3-gaps
-for_window [class=".*"] border pixel 2
-gaps inner 6
+for_window [class=".*"] border pixel 1
+gaps inner 20
 smart_gaps on
 smart_borders on
 
@@ -187,7 +170,6 @@ bindcode $mod+Shift+59 exec "dbus-send --print-reply --dest=org.mpris.MediaPlaye
 
 # shortcuts for commonly used programs
 bindsym $mod+Shift+f exec xterm -e ranger
-bindsym $mod+Shift+a exec xterm -e alsamixer
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+c exec code

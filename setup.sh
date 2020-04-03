@@ -201,7 +201,8 @@ then
 
 	# Move i3 stuff
 	mkdir ~/.config/i3
-	cp -f i3/i3status.conf ~/.config/i3/
+	mkdir ~/.config/i3status
+	cp -f i3/i3status.conf ~/.config/i3status/config
 	cp -f i3/config ~/.config/i3/
 	cp -f i3/app-icons.json ~/.config/i3/
 

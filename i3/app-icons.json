@@ -13,5 +13,6 @@
     "blueman" : "bluetooth",
     "KeePass2" : "lock",
     "ranger" : "folder",
-    "vim" : "edit"
+    "vim" : "edit",
+    "alsamixer" : "speaker"
 }
