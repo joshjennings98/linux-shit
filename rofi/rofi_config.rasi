@@ -1,101 +1,86 @@
 // Josh's Rofi Config
 
 configuration {
-    	display-drun: "Apps";
+    	display-drun: "Search:";
 	show-icons: true;
-	location: 2;
-	fake-transparency: true;
+	location: 0;
+	columns: 3;
+	fake-transparency: false;
 	hide-scrollbar: true;
 	bw: 0;
-	fullscreen: true;
+    	fullscreen: true;
     	show-icons: true;
 	terminal: "xterm";
 	sidebar-mode: false;
 }
 
 * {
-  bg: #222222EE;
-  ac: #869fa214;
-  ac-txt: #869fa2;
-  item: #bdc3c3;
-  txt: #d1d5da;
+	text-font: "Hack 30";
+	accent: #5294E2;
+
+	inputbar-margin: 3px 3px;
+	prompt-padding: 15px 20px;
+	entry-padding: 15px 15px 15px 0px;
+	list-element-padding: 10px;
+	list-element-margin: @inputbar-margin;
+	list-element-border: 0px 0px 0px 5px;
+
+	apps-textbox-prompt-colon-padding: 15px -5px 0px 0px;
+
+
+}
+
+#window {
+	width: 100%;
+	height: 100%;
+	padding: 10px 10px;
 }
 
 * {
-  background-color: rgba(0,0,0,0);
-  font: "hack 30";
+	background-color: #111111;
+	text-color: #CCCCCC;
+	font: @text-font;
 }
 
-window {
-  transparency: "real";
-  fullscreen: true;
-}
-
-mainbox {
-  children: [ inputbar, listview ];
-  margin: 25% 25% 25% 25%;
-  background-color: @bg;
-  border-radius: 12;
-  border: 2;
-  border-color: #ffffff0A;
-}
-
-listview {
-  columns: 2;
-  padding: 8;
-  spacing: 5;
-}
-
-element {
-  border: 1;
-  text-color: @item;
-  orientation: vertical;
-  padding: 8 12 8 12;
-  border-radius: 6;
-}
-
-element selected {
-  background-color: @ac;
-  border: 0;
-  border-color: #ffffff;
-  text-color: #ffffff;
-  transition: 20;
-  font: "hack 30";
-}
-
-element-icon {
-  size: 60;
-  horizontal-align: 0.5;
-  vertical-align: 0.5;
-}
-
-element-icon {
-  size: 40;
-  horizontal-align: 0.5;
-  vertical-align: 0.5;
-}
-
-element-text {
-  horizontal-align: 0.5;
-  vertical-align: 0.5;
-  text-color: inherit;
-}
-
-inputbar {
-  children: [entry];
-  padding: 4 8 4 8;
-  background-color: @bg;
-  border: 0 0 1 0;
-  border-color: #ffffff0A;
-}
-
-prompt {
-  enabled: false;
-}
-
+inputbar,
+prompt,
+textbox-prompt-colon,
 entry {
-  text-color: @txt;
-  padding: 8 12 8 12;
-  font: "hack 40";
-  background-color: @bg;
+	background-color: #111111;
+}
+
+#inputbar {
+	children: [ prompt, textbox-prompt-colon, entry ];
+	margin: @inputbar-margin;
+}
+
+#prompt {
+	padding: @prompt-padding;
+ 	background-color: #111111;
+	text-color: #CCCCCC;
+}
+
+#textbox-prompt-colon {
+	expand: false;
+	str: "";
+	padding: @apps-textbox-prompt-colon-padding;
+}
+
+#entry {
+	text-color: 111111;
+	padding: @entry-padding;
+}
+
+#element {
+	padding: @list-element-padding;
+	margin: @list-element-margin;
+	border: @list-element-border;
+	background-color: #111111;
+	border-color: #111111;
+}
+
+#element.selected {
+	background-color: @background-focus;
+	text-color: @accent;
+	border-color: @accent;
 }
