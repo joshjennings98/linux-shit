@@ -192,6 +192,7 @@ then
 	source ~/.bashrc
 	cp -f system\ stuff/.Xresources ~/
 	cp -f system\ stuff/compton.conf /etc/xdg/
+	cp -f system\ stuff/.inputrc ~/
 
 	# Move ranger stuff
 	mkdir ~/.config/ranger
@@ -244,14 +245,6 @@ then
 	fi
 
 	# Emphasise some important stuff (like things that need to be done manually)
-	echo "- NEED TO MANUALLY MOVE USERCHOME.CSS TO THE CORRECT PLACE TO MAKE FIREFOX LOOK COOL."
-	echo "- SET THE FOLLOWING IN ABOUT.CONFIG:"
-	echo "    toolkit.legacyUserProfileCustomizations.stylesheets: true"
-	echo "    full-screen-api.ignore-widgets: true"
-	echo "    browser.tabs.drawInTitlebar: false"
-	echo "    ALSO NEED TO MANUALLY MOVE + BUTTON FROM TAB BAR."
-	echo " "
-
 	# Reboot
 	echo "Everything should be installed."
 	read -r -p "Would you like to reboot now? [y/N] " response
