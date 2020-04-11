@@ -217,6 +217,7 @@ then
 	cp -f wallpapers/waves.jpg ~/.wallpapers/
 	cp -f wallpapers/nebula2.jpg ~/.wallpapers/
 	cp -f wallpapers/waves2.jpg ~/.wallpapers/
+	cp -f wallpapers/space.jpg ~/.wallpapers/
 
 	# Set up vscode
 	codeextensions -l vscode/vscodeextensions.txt
