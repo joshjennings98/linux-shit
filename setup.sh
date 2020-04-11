@@ -170,7 +170,7 @@ then
 			echo '[linux-surface]' >> /etc/pacman.conf
 			echo 'Server = https://pkg.surfacelinux.com/arch/' >> /etc/pacman.conf
 			sudo pacman -S linux-surface-headers linux-surface surface-ipts-firmware linux-surface-secureboot-mok			
-			cd ~/linux-shit
+			cd ~/linux-stuff
 
 		fi
 
@@ -183,7 +183,7 @@ then
 	wget http://installer.jdownloader.org/JD2SilentSetup_x64.sh
 	chmod +x JD2SilentSetup_x64.sh
 	./JD2SilentSetup_x64.sh
-	cd ~/linux-shit
+	cd ~/linux-stuff
 
 	# Move all the configuration files to the correct places
 
@@ -212,9 +212,11 @@ then
 	cp -f rofi/rofi_config.rasi ~/rofi/
 
 	# Set up wallpapers
-	mkdir ~/wallpapers
-	cp -f wallpapers/nebula.jpg ~/wallpapers/
-	cp -f wallpapers/waves.jpg ~/wallpapers/
+	mkdir ~/.wallpapers
+	cp -f wallpapers/nebula.jpg ~/.wallpapers/
+	cp -f wallpapers/waves.jpg ~/.wallpapers/
+	cp -f wallpapers/nebula2.jpg ~/.wallpapers/
+	cp -f wallpapers/waves2.jpg ~/.wallpapers/
 
 	# Set up vscode
 	codeextensions -l vscode/vscodeextensions.txt
