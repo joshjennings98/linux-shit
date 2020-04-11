@@ -214,6 +214,7 @@ then
 	# Set up wallpapers
 	mkdir ~/wallpapers
 	cp -f wallpapers/nebula.jpg ~/wallpapers/
+	cp -f wallpapers/waves.jpg ~/wallpapers/
 
 	# Set up vscode
 	codeextensions -l vscode/vscodeextensions.txt
@@ -224,6 +225,7 @@ then
 	chmod +x ~/linux-stuff/scripts/flashkb.sh
 	chmod +x ~/linux-stuff/scripts/codeextensions.sh
 	chmod +x ~/linux-stuff/scripts/swapscreens.sh
+	chmod +x ~/linux-stuff/scripts/randomwallpapers.sh
 
 	# Reload .bashrc and stuff
 	source ~/.bashrc
