@@ -215,9 +215,10 @@ then
 	mkdir ~/.wallpapers
 	cp -f wallpapers/nebula.jpg ~/.wallpapers/
 	cp -f wallpapers/waves.jpg ~/.wallpapers/
-	cp -f wallpapers/nebula2.jpg ~/.wallpapers/
+	cp -f wallpapers/neon.jpg ~/.wallpapers/
 	cp -f wallpapers/waves2.jpg ~/.wallpapers/
-	cp -f wallpapers/space.jpg ~/.wallpapers/
+	cp -f wallpapers/wayofkings.png ~/.wallpapers/
+	cp -f wallpapers/amberchronicles.png ~/.wallpapers/
 
 	# Set up vscode
 	codeextensions -l vscode/vscodeextensions.txt
@@ -237,6 +238,7 @@ then
 	# Prep notes stuff
 	echo " "
 	echo "NOTES:"
+	echo "- MIGHT NEED TO MODIFY ~/LINUX-STUFF/ROFI/POWERMENU.RASI SINCE SCALING MIGHT BE MESSED UP."
 
 	# Warning about surface-linux post install stuff
 	if [ "$3" == "surface" ]
