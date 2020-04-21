@@ -14,5 +14,7 @@
     "KeePass2" : "lock",
     "ranger" : "folder",
     "vim" : "edit",
-    "alsamixer" : "speaker"
+    "alsamixer" : "speaker",
+    "gedit" : "edit",
+    "nautilus" : "folder"
 }

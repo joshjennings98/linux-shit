@@ -42,7 +42,7 @@ then
 		sudo apt-get install apt-transport-https -y
 		sudo apt-get install exfat-fuse exfat-utils -y # exfat stuff
 		sudo apt-get install git curl wget sed -y
-		sudo apt-get install network-manager jq dbus w3m-img ffmpeg scrot xterm alsamixer gdebi-core vim imagemagick fonts-font-awesome snap -y # Prerequisit/Useful Stuff
+		sudo apt-get install network-manager jq dbus w3m-img ffmpeg scrot xterm alsamixer gdebi-core vim imagemagick fonts-font-awesome snap nautilus gedit -y # Prerequisit/Useful Stuff
 		sudo apt-get install autoconf autogen libusb-dev -y
 
 		# Install compton stuff
@@ -129,7 +129,7 @@ then
 		# Install utilities and stuff
 		sudo pacman -S exfat-utils --noconfirm # exfat stuff
 		sudo pacman -S git curl wget sed --noconfirm
-		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick ttf-font-awesome --noconfirm # Prerequisit/Useful Stuff
+		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick ttf-font-awesome nautilus gedit --noconfirm # Prerequisit/Useful Stuff
 		sudo pacman -S autoconf autogen libusb --noconfirm
 
 		# Install compton stuff
