@@ -1,35 +1,23 @@
-/*
- *
- * Power menu
- *
- */
-
-
-/* ########### */
+// Powermenu Config
 
 * {
-  /* General */
   text-font:                            "monospace 29";
   icon-font:                            "Awesome 124";
 
   option-6-listview-spacing:            10px;
 
   menu-window-padding:                   15px 25px;
-  menu-inputbar-margin:                  10px 0px;
+  menu-inputbar-margin:                  10px 0px 20px 0px;
   menu-prompt-padding:                   10px 20px 10px 25px;
   menu-prompt-margin:                    0px 0px 0px -2px;
-  menu-element-border:                   30px;
-  menu-element-padding:                  3px 24px -2px -165px;
+  menu-element-border:                   2px;
+  menu-element-padding:                  50px 100px 30px -165px;
 }
-
-/* ########### */
 
 #window {
-  width: 35%;
-  height: 21%;
+  width: 40%;
+  height: 23%;
 }
-
-/* ########### */
 
 * {
   background-color: #000000;
@@ -51,8 +39,6 @@
   background-color: #000000;
   text-color: #FFFFFF;
 }
-
-/* ########### */
 
 * {
   font: @text-font;
@@ -96,7 +82,7 @@ textbox-prompt-colon {
   border-color: #000000;
 }
 #element.selected {
-  border-color: #000000;
+  border-color: #FFFFFF;
 }
 element.active,
 element.selected.urgent {

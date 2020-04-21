@@ -1,7 +1,7 @@
 // Josh's Rofi Config
 
 configuration {
-    	display-drun: "Search:";
+    	display-drun: "Search";
 	show-icons: true;
 	location: 0;
 	columns: 3;
@@ -15,30 +15,29 @@ configuration {
 }
 
 * {
-	text-font: "Hack 30";
-	accent: #5294E2;
+	text-font: "monospace 30";
+	accent: #FFFFFF;
 
-	inputbar-margin: 3px 3px;
+	inputbar-margin: 15px 5px;
 	prompt-padding: 15px 20px;
-	entry-padding: 15px 15px 15px 0px;
-	list-element-padding: 10px;
-	list-element-margin: @inputbar-margin;
-	list-element-border: 0px 0px 0px 5px;
+	prompt-border: 2px;
+	entry-padding: 18px 15px 15px 15px;
+	list-element-padding: 15px;
+	list-element-margin: 5px;
+	list-element-border: 2px;
 
 	apps-textbox-prompt-colon-padding: 15px -5px 0px 0px;
-
-
 }
 
 #window {
 	width: 100%;
 	height: 100%;
-	padding: 10px 10px;
+	padding: 0px 10px 0px 15px;
 }
 
 * {
-	background-color: #111111;
-	text-color: #CCCCCC;
+	background-color: #000000;
+	text-color: #888888;
 	font: @text-font;
 }
 
@@ -46,18 +45,22 @@ inputbar,
 prompt,
 textbox-prompt-colon,
 entry {
-	background-color: #111111;
+	background-color: #000000;
 }
 
 #inputbar {
 	children: [ prompt, textbox-prompt-colon, entry ];
 	margin: @inputbar-margin;
+	border: @list-element-border;
+	border-color: #FFFFFF;
 }
 
 #prompt {
 	padding: @prompt-padding;
- 	background-color: #111111;
-	text-color: #CCCCCC;
+	border: @list-element-border;
+	border-color: #FFFFFF;
+ 	background-color: #FFFFFF;
+	text-color: #000000;
 }
 
 #textbox-prompt-colon {
@@ -67,16 +70,17 @@ entry {
 }
 
 #entry {
-	text-color: 111111;
+	text-color: #FFFFFF;
 	padding: @entry-padding;
+	
 }
 
 #element {
 	padding: @list-element-padding;
 	margin: @list-element-margin;
 	border: @list-element-border;
-	background-color: #111111;
-	border-color: #111111;
+	background-color: #000000;
+	border-color: #000000;
 }
 
 #element.selected {
