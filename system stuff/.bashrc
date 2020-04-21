@@ -21,3 +21,4 @@ alias lr='ls -R' # list EVERYTHING (recursive ls)
 alias blset='sudo brightnessctl set' # Set brightness
 alias codeextensions='~/linux-shit/scripts/codeextensions.sh'
 alias lsalias="grep -in --color -e '^alias\s+*' ~/.bashrc | sed 's/alias //' | grep --colour -e ':[a-z][a-z0-9]*'" # list all aliases"
+alias linecount="git ls-files | xargs wc -l" # Count lines of code in git repo
