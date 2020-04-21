@@ -221,8 +221,8 @@ then
 	cp -f wallpapers/amberchronicles.png ~/.wallpapers/
 
 	# Set up vscode
-	codeextensions -l vscode/vscodeextensions.txt
-	cp -f vscode/vscode\ settings.json ~/.config/Code/User/
+	sh ~/linux-stuff/scripts/codeextensions -l vscode/vscodeextensions.txt
+	cp -f ~/linux-stuff/vscode/vscode\ settings.json ~/.config/Code/User/
 	mv ~/.config/Code/User/vscode\ settings.json ~/.config/Code/User/settings.json
 
 	# Make scripts executable
@@ -230,6 +230,7 @@ then
 	chmod +x ~/linux-stuff/scripts/codeextensions.sh
 	chmod +x ~/linux-stuff/scripts/swapscreens.sh
 	chmod +x ~/linux-stuff/scripts/randomwallpapers.sh
+	chmod +x ~/linux-stuff/scripts/powermenu.sh
 
 	# Reload .bashrc and stuff
 	source ~/.bashrc

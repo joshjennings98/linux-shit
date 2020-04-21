@@ -129,13 +129,12 @@ exec_always --no-startup-id setxkbmap -layout gb
 exec_always --no-startup-id xrandr --dpi 180
 
 # start random wallpaper script
-exec_always --no-startup-id ~/linux-stuff/scripts/randomwallpapers.sh
+exec_always --no-startup-id ~/linux-stuff/scripts/randomwallpapers.sh # Setup script should make this executable
 
 # lock screen (blur)
 bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png"
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-stuff/rofi/rofi_config.rasi
 
 # compton
 exec_always compton --backend glx --blur-method kawase --blur-background --blur-strength 4
@@ -150,7 +149,7 @@ smart_borders on
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "sh ~/linux-stuff/scripts/powermenu.sh"
+bindsym $mod+Shift+e exec ~/linux-stuff/scripts/powermenu.sh # Setup script should make this executable
 
 # Volume keys
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
@@ -169,4 +168,4 @@ bindsym $mod+Shift+f exec xterm -e ranger
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+c exec code
-bindsym $mod+Shift+s exec ~/linux-stuff/scripts/swapscreens.sh
+bindsym $mod+Shift+s exec ~/linux-stuff/scripts/swapscreens.sh # Setup script should make this executable
