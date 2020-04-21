@@ -13,11 +13,11 @@ options="$lock\n$logout\n$shutdown"
 
 chosen="$(echo -e  "$options" | $rofi_command -p "Uptime - $uptime" -dmenu -selected-row 0)"
 case $chosen in
+    "-e $lock")
+	scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png
+        ;;
     $shutdown)
         systemctl poweroff
-        ;;
-    $lock)
-        scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png
         ;;
     $logout)
         i3-msg exit
