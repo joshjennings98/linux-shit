@@ -1,0 +1,105 @@
+// Powermenu Config
+
+* {
+  text-font:                            "monospace 32";
+  icon-font:                            "monospace 42";
+
+  //option-6-listview-spacing:            10px;
+
+  menu-window-padding:                   15px 25px;
+  menu-inputbar-margin:                  10px 0px 20px 0px;
+  menu-prompt-padding:                   10px 20px 10px 25px;
+  menu-prompt-margin:                    0px 0px 0px -2px;
+  menu-element-border:                   2px;
+  menu-element-padding:                  0px;
+}
+
+#window {
+  width: 28%;
+  height: 37%;
+}
+
+* {
+  background-color: #000000;
+  text-color: #888888;
+  font: @icon-font;
+}
+
+#horibox {
+  children: [ listview ];
+}
+#listview {
+  layout: vertical;
+}
+#element {
+  padding: @option-element-padding;
+  background-color: #000000;
+}
+#element.selected {
+  background-color: #000000;
+  text-color: #FFFFFF;
+}
+
+* {
+  font: @text-font;
+}
+#window {
+  padding: @menu-window-padding;
+  children: [ inputbar, horibox ];
+}
+#inputbar {
+  children: [ textbox-prompt-colon, prompt ];
+  margin: @menu-inputbar-margin;
+}
+prompt,
+textbox-prompt-colon {
+  padding: @menu-prompt-padding;
+  border: 2px;
+  border-color: #FFFFFF;
+}
+#prompt {
+  margin: @menu-prompt-margin;
+  background-color: #000000;
+  text-color: #FFFFFF;
+}
+#textbox-prompt-colon {
+  expand: false;
+  str: "Date";
+  background-color: #FFFFFF;
+  text-color: #000000;
+}
+#horibox {
+  padding: 0px;
+}
+#listview {
+  spacing: @option-6-listview-spacing;
+  lines: 5;
+}
+#element {
+  font: @icon-font;
+  border: @menu-element-border;
+  padding: @menu-element-padding;
+  border-color: #000000;
+}
+#element.selected {
+  border-color: #FFFFFF;
+}
+element.active,
+element.selected.urgent {
+  background-color: @on;
+  text-color: #000000;
+  border-color: @on;
+}
+element.selected.urgent {
+  border-color: #FFFFFF;
+}
+element.urgent,
+element.selected.active {
+  background-color: @off;
+  text-color: #000000;
+  border-color: @off;
+}
+element.selected.active {
+  border-color: #FFFFFF;
+}
+

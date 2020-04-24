@@ -4,12 +4,11 @@ configuration {
     	display-drun: "Search";
 	show-icons: true;
 	location: 0;
-	columns: 3;
+	columns: 4;
 	fake-transparency: false;
 	hide-scrollbar: true;
 	bw: 0;
     	fullscreen: true;
-    	show-icons: true;
 	terminal: "xterm";
 	sidebar-mode: false;
 }

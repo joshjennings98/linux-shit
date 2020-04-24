@@ -239,7 +239,7 @@ then
 	# Prep notes stuff
 	echo " "
 	echo "NOTES:"
-	echo "- MIGHT NEED TO MODIFY ~/LINUX-STUFF/ROFI/POWERMENU.RASI SINCE SCALING MIGHT BE MESSED UP."
+	echo "- MIGHT NEED TO MODIFY ~/LINUX-STUFF/ROFI/X.RASI SINCE SCALING MIGHT BE MESSED UP."
 
 	# Warning about surface-linux post install stuff
 	if [ "$3" == "surface" ]
