@@ -42,7 +42,7 @@ then
 		sudo apt-get install apt-transport-https -y
 		sudo apt-get install exfat-fuse exfat-utils -y # exfat stuff
 		sudo apt-get install git curl wget sed -y
-		sudo apt-get install network-manager jq dbus w3m-img ffmpeg scrot xterm alsamixer gdebi-core vim imagemagick fonts-font-awesome snap nautilus gedit -y # Prerequisit/Useful Stuff
+		sudo apt-get install network-manager jq dbus w3m-img ffmpeg scrot xterm alsamixer gdebi-core vim imagemagick fonts-font-awesome snap nautilus gedit maim -y # Prerequisit/Useful Stuff
 		sudo apt-get install autoconf autogen libusb-dev -y
 
 		# Install compton stuff
@@ -231,6 +231,10 @@ then
 	chmod +x ~/linux-stuff/scripts/swapscreens.sh
 	chmod +x ~/linux-stuff/scripts/randomwallpapers.sh
 	chmod +x ~/linux-stuff/scripts/powermenu.sh
+	
+	# Move custom py3status modules
+	mkdir ~/.config/i3/py3status
+	cp -f ~/linux-stuff/i3/py3status/expressvpn.py ~/.config/i3/py3status
 
 	# Reload .bashrc and stuff
 	source ~/.bashrc
