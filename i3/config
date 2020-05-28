@@ -113,7 +113,7 @@ bar {
 	position top
 	separator_symbol "|"
 	i3bar_command i3bar -t
-	status_command py3status #| ~/i3spotifystatus/pystatus.py
+	status_command py3status
 	strip_workspace_numbers no
 	tray_output none
 }
@@ -129,19 +129,26 @@ exec_always --no-startup-id setxkbmap -layout gb
 exec_always --no-startup-id xrandr --dpi 180
 
 # start random wallpaper script
-exec_always --no-startup-id ~/linux-stuff/scripts/randomwallpapers.sh # Setup script should make this executable
+exec --no-startup-id ~/linux-stuff/scripts/randomwallpapers.sh
 
 # lock screen (blur)
 bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png"
 
 # start rofi
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-stuff/rofi/rofi_config.rasi
 
 # compton
-exec_always compton --backend glx --blur-method kawase --blur-background --blur-strength 4
+exec_always compton
+
+# vpn
+exec expressvpn connect
+
+# auto tiling
+exec_always --no-startup-id ~/linux-stuff/scripts/i3-auto-layout
 
 # i3-gaps
 for_window [class=".*"] border pixel 1
-gaps inner 20
+gaps inner 10
 smart_gaps on
 smart_borders on
 
@@ -149,7 +156,7 @@ smart_borders on
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec ~/linux-stuff/scripts/powermenu.sh # Setup script should make this executable
+bindsym $mod+Shift+e exec "sh ~/linux-stuff/scripts/powermenu.sh"
 
 # Volume keys
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
@@ -168,4 +175,4 @@ bindsym $mod+Shift+f exec xterm -e ranger
 bindsym $mod+Shift+b exec firefox
 bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+c exec code
-bindsym $mod+Shift+s exec ~/linux-stuff/scripts/swapscreens.sh # Setup script should make this executable
+bindsym $mod+Shift+s exec ~/linux-stuff/scripts/swapscreens.sh

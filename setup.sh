@@ -93,7 +93,8 @@ then
 		# Install godot using snap :(
 		sudo snap install godot --classic
 
-		if [ "$3" == "surface" ] # Set up kernel patches for surface (ubuntu version)
+		# Set up kernel patches for surface (ubuntu version)
+		if [ "$3" == "surface" ] 
 	
 		then
 			
@@ -231,6 +232,7 @@ then
 	chmod +x ~/linux-stuff/scripts/swapscreens.sh
 	chmod +x ~/linux-stuff/scripts/randomwallpapers.sh
 	chmod +x ~/linux-stuff/scripts/powermenu.sh
+	chmod +x ~/linux-stuff/scripts/i3-auto-layout
 	
 	# Move custom py3status modules
 	mkdir ~/.config/i3/py3status
