@@ -130,7 +130,7 @@ then
 		# Install utilities and stuff
 		sudo pacman -S exfat-utils --noconfirm # exfat stuff
 		sudo pacman -S git curl wget sed --noconfirm
-		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick ttf-font-awesome nautilus gedit --noconfirm # Prerequisit/Useful Stuff
+		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick ttf-font-awesome nautilus gedit maim --noconfirm # Prerequisit/Useful Stuff
 		sudo pacman -S autoconf autogen libusb --noconfirm
 
 		# Install compton stuff
