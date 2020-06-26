@@ -53,7 +53,7 @@ class Py3status:
         
         for vpnLocation in recommendedLocations:
             if vpnLocation in self.status:
-                self.location = f" ({vpnLocation.split(' ')[0]})"
+                self.location = f" {vpnLocation.split(' ')[0]}"
         
         if self.up:
             self.connectionStatus = "Connected"
@@ -80,7 +80,7 @@ class Py3status:
                 self.location = ""
 
         return {
-            'full_text': f"{'' if self.up else ''}  ExpressVPN: {self.connectionStatus}{self.location}",
+            'full_text': f"{'' if self.up else ''}  VPN:{'' if self.connectionStatus != 'Connecting' else ' Connecting'}{self.location if self.connectionStatus == 'Connected' else ''}{' Off' if self.connectionStatus == 'Not connected' else ''}",
             'cached_until': self.py3.time_in(self.cache_timeout),
             'color': self.colour
         }

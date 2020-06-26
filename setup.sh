@@ -46,13 +46,24 @@ then
 		sudo apt-get install autoconf autogen libusb-dev -y
 
 		# Install compton stuff
-		sudo apt-get install libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxext-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-core-dev x11-utils libconfig-dev libdrm-dev libgl-dev libdbus-1-3 asciidoc -y
-		git clone https://github.com/tryone144/compton ~/
-		cd ~/compton
-		sudo make
-		sudo make docs
-		sudo make install
-		cd ~/linux-stuff
+		# sudo apt-get install libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxext-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-core-dev x11-utils libconfig-dev libdrm-dev libgl-dev libdbus-1-3 asciidoc -y
+		# git clone https://github.com/tryone144/compton ~/
+		# cd ~/compton
+		# sudo make
+		# sudo make docs
+		# sudo make install
+		# cd ~/linux-stuff
+		
+		# Install picom stuff
+		sudo apt install ninja meson
+		sudo apt-get install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev  libpcre2-dev  libevdev-dev uthash-dev libev-dev libx11-xcb-dev -y
+		git clone https://github.com/sdhand/picom ~/
+		cd ~/picom
+		git submodule update --init --recursive
+        meson --buildtype=release . build
+        ninja -C build
+        sudo ninja -C build install
+        cd ~/linux-stuff
 
 		# Install i3 stuff
 		sudo apt-get install i3 i3status dmenu i3lock xbacklight feh rofi py3status -y
@@ -133,15 +144,6 @@ then
 		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick ttf-font-awesome nautilus gedit maim --noconfirm # Prerequisit/Useful Stuff
 		sudo pacman -S autoconf autogen libusb --noconfirm
 
-		# Install compton stuff
-		sudo pacman -S libx11 libxcomposite libxdamage libxfixes libxext libxrender libxrandr libxinerama pkgconf make xorgproto xorg-xwininfo xorg-xprop pcre libconfig libdrm glib2 dbus asciidoc --noconfirm
-		git clone https://github.com/tryone144/compton ~/
-		cd ~/compton
-		sudo make
-		sudo make docs
-		sudo make install
-		cd ~/linux-stuff
-
 		# Install i3 stuff
 		sudo pacman -S i3 xorg-xbacklight feh rofi py3status --noconfirm
 		sudo pip install i3-workspace-names-daemon
@@ -157,7 +159,7 @@ then
 		sudo pacman -S discord
 
 		# Install AUR stuff
-		yay -S rdfind spotify minecraft-launcher godot
+		yay -S rdfind spotify minecraft-launcher godot picom-rounded-corners
 
 		if [ "$3" == "surface" ] # Set up kernel patches for surface (arch version)
 
@@ -178,6 +180,11 @@ then
 	fi
 
 	# Install non distro specific packages
+	
+	# Move font awesome to correct place
+	sudo mkdir /usr/share/fonts/opentype
+	sudo cp ~/linux-stuff/fonts/Font\ Awesome\ 5\ Free-Solid-900.otf /usr/share/fonts/opentype
+	sudo fc-cache -f -v	
 
 	# Install JDownloader2
 	cd ~/Downloads
@@ -194,6 +201,11 @@ then
 	cp -f system\ stuff/.Xresources ~/
 	cp -f system\ stuff/compton.conf /etc/xdg/
 	cp -f system\ stuff/.inputrc ~/
+	
+	# Polybar
+	mkdir ~/.config/polybar
+	cp ~/linux-stuff/polybar/config ~/.config/polybar
+	cp ~/linux-stuff/polybar/launch.sh ~/.config/polybar
 
 	# Move ranger stuff
 	mkdir ~/.config/ranger
@@ -233,10 +245,6 @@ then
 	chmod +x ~/linux-stuff/scripts/randomwallpapers.sh
 	chmod +x ~/linux-stuff/scripts/powermenu.sh
 	chmod +x ~/linux-stuff/scripts/i3-auto-layout
-	
-	# Move custom py3status modules
-	mkdir ~/.config/i3/py3status
-	cp -f ~/linux-stuff/i3/py3status/expressvpn.py ~/.config/i3/py3status
 
 	# Reload .bashrc and stuff
 	source ~/.bashrc

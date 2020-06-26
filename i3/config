@@ -141,7 +141,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/linux-stuff/rofi/ro
 exec_always compton
 
 # vpn
-exec expressvpn connect
+# exec expressvpn connect
 
 # auto tiling
 exec_always --no-startup-id ~/linux-stuff/scripts/i3-auto-layout

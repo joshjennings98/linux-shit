@@ -1,0 +1,233 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+;=====================================================
+;   variables
+;=====================================================
+[variables]
+bar-height = 3%
+
+
+;=====================================================
+;   fonts
+;=====================================================
+[fonts]
+; surface pro 6 resolution
+font-0 = Iosevka:size=24;4
+font-1 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=24:antialias=true;5
+; 1080p
+font-2 = Iosevka:size=14;2
+font-3 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=14:antialias=true;3
+
+;=====================================================
+;   bar 1
+;=====================================================
+[bar/screen1]
+monitor = eDP-1
+height = ${variables.bar-height}
+modules-right = alsa express-vpn internet battery
+modules-center = date time
+modules-left = user i3
+;separator = ""
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+line-size = 2
+width = 99.4%
+radius = 10
+border-top-size = 1%
+border-left-size = 0.6%
+
+;=====================================================
+;   bar 2
+;=====================================================
+[bar/screen2]
+monitor = HDMI-1
+height = ${variables.bar-height}
+modules-right = temp mem cpu filesystem
+modules-center = title
+modules-left = user i3
+;separator = ""
+font-0 = ${fonts.font-2}
+font-1 = ${fonts.font-3}
+line-size = 2
+width = 99.2%
+radius = 6
+border-top-size = 1.5%
+border-left-size = 0.8%
+
+;=====================================================
+;   temp
+;=====================================================
+[module/temp]
+type = internal/temperature
+interval = 2
+label = "%{F#ff99ff}%{F-} %temperature-c% "
+format = <label>
+thermal-zone = 7 ; x86_pkg_temp
+
+;=====================================================
+;   title bar
+;=====================================================
+[module/title]
+type = internal/xwindow
+
+;=====================================================
+;   filesystem
+;=====================================================
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+interval = 20
+label-mounted = "%{F#ed4c4c}%{F-} %free% "
+label-unmounted = %mountpoint%: not mounted
+fixed-values = true
+
+;=====================================================
+;   cpu
+;=====================================================
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = "%{F#ffa500}%{F-} %percentage%% "
+format = <label>
+
+;=====================================================
+;   mem
+;=====================================================
+[module/mem]
+type = internal/memory
+interval = 2
+label = "%{F#3CB371} %{F-}%percentage_used%% "
+format = <label>
+
+;=====================================================
+;   volume module
+;=====================================================
+[module/alsa]
+type = internal/alsa
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
+label-muted = " %percentage%%  "
+label-muted-foreground = #666
+format-volume = "%{F#ff99ff}<ramp-volume>%{F-} <label-volume>  "
+
+;=====================================================
+;   date module
+;=====================================================
+[module/date]
+type = custom/script
+tail = true
+label = "%{F#fff} %output% %{F-}"
+exec = date +'%a %d %b %Y'
+interval = 1
+click-left = ~/linux-stuff/scripts/cal.sh
+
+;=====================================================
+;   time module 
+;=====================================================
+[module/time]
+type = custom/script
+tail = true
+label = "%{F#fff}%output% %{F-}"
+exec = date +'%H:%M'
+interval = 1
+click-left = timestamp=$(date +%Y-%m-%d-%Hh%Mm%Ss%3N) && maim -s ~/Pictures/screenshot-$timestamp.png && pinta ~/Pictures/screenshot-$timestamp.png
+
+;=====================================================
+;   express vpn module
+;=====================================================
+[module/express-vpn]
+type = custom/script
+tail = true
+label = "%output% "
+exec = bash ~/linux-stuff/scripts/vpn.sh
+interval = 1
+click-left = bash ~/linux-stuff/scripts/toggleExpressVPN.sh & bash ~/linux-stuff/scripts/vpn.sh
+
+;=====================================================
+;   internet module
+;=====================================================
+[module/internet]
+type = custom/script
+tail = true
+;device = "wlp1s0"
+label = "%output% "
+exec = bash ~/linux-stuff/scripts/getInternetStatus.sh
+interval = 1
+click-left = xterm -e nmtui
+
+;=====================================================
+;   battery module
+;=====================================================
+[module/battery]
+type = internal/battery
+format-charging = <label-charging>
+format-discharging = %{F#ed4c4c}<ramp-capacity>%{F-} <label-discharging>
+format-full = %{F#ed4c4c}<ramp-capacity>%{F-} <label-full>
+
+label-charging = %{F#ed4c4c}%{F-} %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+;=====================================================
+;   user
+;=====================================================
+[module/user]
+type = custom/script
+label = "%{F#86c5da}%output% %{F-}"
+exec = echo " "
+click-left = rofi -show drun -theme ~/linux-stuff/rofi/rofi_config.rasi
+click-right = sh ~/linux-stuff/scripts/powermenu.sh
+
+;=====================================================
+;   i3 workspaces module 
+;=====================================================
+[module/i3]
+type = internal/i3
+index-sort = true
+wrapping-scroll = true
+strip-wsnumbers = false
+pin-workspaces = true
+format = <label-state>
+
+label-focused-foreground = #fff
+label-unfocused-foreground = #666
+label-visible-foreground = #fff
+label-urgent-foreground = #f00
+
+label-focused = " %index% "
+label-unfocused = " %index% "
+label-visible = " %index% "
+label-urgent = " %index% "
+
+;label-focused = "%{T3} ●%{T-}"
+;label-unfocused = "%{T3} ●%{T-}"
+;label-visible = "%{T3} ●%{T-}"
+;label-urgent = "%{T3} ●%{T-}"
+

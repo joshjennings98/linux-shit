@@ -10,7 +10,7 @@ def main(x=0):
 	w = m[1] // 7 if m[1] % 7 == 0 else m[1] // 7 + 1
 
 	days = [" " for i in range(m[0])] + [str(i+1) for i in range(m[1])]
-	dayNames = ["Mo ", "Tu ", "We ", "Th ", "Fr ", "Sa ", "Su "]
+	dayNames = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 
 	for day in dayNames:
 		print(day)
