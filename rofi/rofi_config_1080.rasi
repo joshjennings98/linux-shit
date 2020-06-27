@@ -1,42 +1,43 @@
 // Josh's Rofi Config
 
 configuration {
-    display-drun: "Search";
+    display-drun: "";
 	show-icons: true;
 	location: 0;
-	columns: 1;
-	fake-transparency: false;
+	columns: 3;
+	fake-transparency: true;
 	hide-scrollbar: true;
 	bw: 0;
-    fullscreen: false;
+    fullscreen: true;
 	terminal: "xterm";
 	sidebar-mode: false;
 }
 
 * {
-	text-font: "Iosevka 20";
+	text-font: "Iosevka 22";
 	accent: #FFFFFF;
 
-	inputbar-margin: 15px 0px 0px 0px;
-	prompt-padding: 5px 5px;
+	inputbar-margin: 15px 0px;
+	prompt-padding: 15px 20px;
 	prompt-border: 2px;
-	entry-padding: 8px 5px 5px 5px;
-	list-element-padding: 5px;
-	list-element-margin: 5px;
+	entry-padding: 15px 0px 0px 0px;
+	list-element-padding: 6px;
+	list-element-margin: 2px;
 	list-element-border: 2px;
 
 	apps-textbox-prompt-colon-padding: 15px -5px 0px 0px;
 }
 
 #window {
-	width: 32%;
-	height: 45%;
-	padding: 0px 10px 0px 15px;
+	width: 36%;
+	height: 42%;
+	padding: 15% 15% 15% 15%;
+	background-color: #000000DD;
 }
 
 * {
-	background-color: #000000;
-	text-color: #888888;
+	background-color: #00000000;
+	text-color: #FFFFFF;
 	font: @text-font;
 }
 
@@ -44,25 +45,30 @@ inputbar,
 prompt,
 textbox-prompt-colon,
 entry {
-	background-color: #000000;
+    font: "FontAwesome 28";
+	background-color: #FFFFFF00;
 }
 
 #inputbar {
 	children: [ prompt, textbox-prompt-colon, entry ];
 	margin: @inputbar-margin;
 	border: @list-element-border;
-	border-color: #FFFFFF;
+	border-color: #FFFFFF00;
+	background-color: #FFFFFF11;
+	border-radius: 13;
 }
 
 #prompt {
 	padding: @prompt-padding;
 	border: @list-element-border;
-	border-color: #FFFFFF;
- 	background-color: #FFFFFF;
-	text-color: #000000;
+	border-color: #FFFFFF00;
+ 	background-color: #FFFFFF00;
+	text-color: #FFFFFF;
+	border-radius: 13;
+	
 }
 
-#textbox-prompt-colon {
+#textbox-prompt-colon {  
 	expand: false;
 	str: "";
 	padding: @apps-textbox-prompt-colon-padding;
@@ -71,19 +77,21 @@ entry {
 #entry {
 	text-color: #FFFFFF;
 	padding: @entry-padding;
-	
+	border-radius: 13;
+	//background-color: #FFFFFF11;
 }
 
 #element {
 	padding: @list-element-padding;
 	margin: @list-element-margin;
 	border: @list-element-border;
-	background-color: #000000;
-	border-color: #000000;
+	background-color: #00000000;
+	border-color: #00000000;
+	border-radius: 13;
 }
 
 #element.selected {
-	background-color: @background-focus;
+	background-color: #FFFFFF11;
 	text-color: @accent;
 	//border-color: @accent;
 }
