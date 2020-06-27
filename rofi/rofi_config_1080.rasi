@@ -17,10 +17,10 @@ configuration {
 	text-font: "Iosevka 22";
 	accent: #FFFFFF;
 
-	inputbar-margin: 15px 0px;
-	prompt-padding: 15px 20px;
+	inputbar-margin: 8px 0px;
+	prompt-padding: 8px 20px;
 	prompt-border: 2px;
-	entry-padding: 15px 0px 0px 0px;
+	entry-padding: 8px 0px 0px 0px;
 	list-element-padding: 6px;
 	list-element-margin: 2px;
 	list-element-border: 2px;
@@ -45,7 +45,7 @@ inputbar,
 prompt,
 textbox-prompt-colon,
 entry {
-    font: "FontAwesome 28";
+    font: "FontAwesome 22";
 	background-color: #FFFFFF00;
 }
 
