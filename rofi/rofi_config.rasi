@@ -15,7 +15,7 @@ configuration {
 
 * {
 	text-font: "Iosevka 36";
-	accent: #FFFFFF;
+	accent: #FFF;
 
 	inputbar-margin: 15px 0px;
 	prompt-padding: 15px 20px;
@@ -32,38 +32,42 @@ configuration {
 	width: 36%;
 	height: 42%;
 	padding: 15% 15% 15% 15%;
-	background-color: #000000DD;
+	background-color: #000D;
 }
 
 * {
-	background-color: #00000000;
-	text-color: #FFFFFF;
+	background-color: #0000;
+	text-color: #FFF;
 	font: @text-font;
 }
 
 inputbar,
-prompt,
 textbox-prompt-colon,
-entry {
+prompt {
     font: "FontAwesome 36";
-	background-color: #FFFFFF00;
+	background-color: #0000;
+}
+
+entry{
+    font: "Iosevka 36";
+	background-color: #0000;
 }
 
 #inputbar {
 	children: [ prompt, textbox-prompt-colon, entry ];
 	margin: @inputbar-margin;
 	border: @list-element-border;
-	border-color: #FFFFFF00;
-	background-color: #FFFFFF11;
+	border-color: #0000;
+	background-color: #FFF1;
 	border-radius: 20;
 }
 
 #prompt {
 	padding: @prompt-padding;
 	border: @list-element-border;
-	border-color: #FFFFFF00;
- 	background-color: #FFFFFF00;
-	text-color: #FFFFFF;
+	border-color: #0000;
+ 	background-color: #0000;
+	text-color: #FFF;
 	border-radius: 20;
 	
 }
@@ -75,23 +79,21 @@ entry {
 }
 
 #entry {
-	text-color: #FFFFFF;
+	text-color: #FFF;
 	padding: @entry-padding;
 	border-radius: 20;
-	//background-color: #FFFFFF11;
 }
 
 #element {
 	padding: @list-element-padding;
 	margin: @list-element-margin;
 	border: @list-element-border;
-	background-color: #00000000;
-	border-color: #00000000;
+	background-color: #0000;
+	border-color: #0000;
 	border-radius: 20;
 }
 
 #element.selected {
-	background-color: #FFFFFF11;
+	background-color: #FFF1;
 	text-color: @accent;
-	//border-color: @accent;
 }
