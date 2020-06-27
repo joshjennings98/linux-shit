@@ -60,7 +60,7 @@ font-0 = ${fonts.font-2}
 font-1 = ${fonts.font-3}
 line-size = 2
 width = 99.2%
-radius = 6
+radius = 10
 border-top-size = 1.5%
 border-left-size = 0.8%
 
@@ -79,6 +79,7 @@ thermal-zone = 7 ; x86_pkg_temp
 ;=====================================================
 [module/title]
 type = internal/xwindow
+label-maxlen = 100
 
 ;=====================================================
 ;   filesystem
@@ -141,6 +142,7 @@ label = "%{F#fff} %output% %{F-}"
 exec = date +'%a %d %b %Y'
 interval = 1
 click-left = ~/linux-stuff/scripts/cal.sh
+click-right = ~/linux-stuff/scripts/cal.sh 1
 
 ;=====================================================
 ;   time module 
@@ -202,7 +204,7 @@ ramp-capacity-4 = 
 type = custom/script
 label = "%{F#86c5da}%output% %{F-}"
 exec = echo " "
-click-left = rofi -show drun -theme ~/linux-stuff/rofi/rofi_config.rasi
+click-left = bash ~/linux-stuff/scripts/launchRofi.sh
 click-right = sh ~/linux-stuff/scripts/powermenu.sh
 
 ;=====================================================

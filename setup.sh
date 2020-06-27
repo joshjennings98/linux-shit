@@ -141,7 +141,7 @@ then
 		# Install utilities and stuff
 		sudo pacman -S exfat-utils --noconfirm # exfat stuff
 		sudo pacman -S git curl wget sed --noconfirm
-		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick ttf-font-awesome nautilus gedit maim --noconfirm # Prerequisit/Useful Stuff
+		sudo pacman -S network-manager-applet jq w3m ffmpeg scrot xterm alsa-utils vim imagemagick gedit maim --noconfirm # Prerequisit/Useful Stuff
 		sudo pacman -S autoconf autogen libusb --noconfirm
 
 		# Install i3 stuff
@@ -159,7 +159,7 @@ then
 		sudo pacman -S discord
 
 		# Install AUR stuff
-		yay -S rdfind spotify minecraft-launcher godot picom-rounded-corners
+		yay -S rdfind spotify minecraft-launcher godot picom-rounded-corners ttf-iosevka
 
 		if [ "$3" == "surface" ] # Set up kernel patches for surface (arch version)
 
@@ -229,7 +229,6 @@ then
 	cp -f wallpapers/nebula.jpg ~/.wallpapers/
 	cp -f wallpapers/waves.jpg ~/.wallpapers/
 	cp -f wallpapers/neon.jpg ~/.wallpapers/
-	cp -f wallpapers/waves2.jpg ~/.wallpapers/
 	cp -f wallpapers/wayofkings.png ~/.wallpapers/
 	cp -f wallpapers/amberchronicles.png ~/.wallpapers/
 

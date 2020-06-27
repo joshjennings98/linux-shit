@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -theme ~/linux-stuff/rofi/powermenu.rasi"
+m=$(bash ~/linux-stuff/scripts/getMonitorIndex.sh)
+
+if [ $m -eq 0 ] ; then
+    rofi_command="rofi -theme ~/linux-stuff/rofi/powermenu.rasi"
+else
+    rofi_command="rofi -theme ~/linux-stuff/rofi/powermenu_1080.rasi"
+fi
+
 uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options

@@ -8,12 +8,12 @@ then
 	currDay=`date +%d`
 	month=`date +%m`
 	startDay=`date -d "$currDay days ago" +%u`
-	day="$(python3 ~/linux-stuff/scripts/cal.py | $rofi_command -p "$x" -dmenu -columns 6 -selected-row $((currDay+startDay+6)) -location 3 -yoffset 54)"
+	day="$(python3 ~/linux-stuff/scripts/cal.py | $rofi_command -p "$x" -dmenu -columns 6 -selected-row $((currDay+startDay%7+6)) -location 2 -yoffset 66)"
 else
 	x=`date -d 'next month' +'%B %Y'`
 	currDay=`date +%u`
 	m=`date -d 'next month' +%m`
-	day="$(python3 ~/linux-stuff/scripts/cal.py $1 | $rofi_command -p "$x" -dmenu -columns 6 -selected-row $((currDay-1)) -location 3 -yoffset 54)"
+	day="$(python3 ~/linux-stuff/scripts/cal.py $1 | $rofi_command -p "$x" -dmenu -columns 6 -selected-row $((currDay-1)) -location 2 -yoffset 66)"
 fi
 
 if [[ $day =~ [0-9]+ ]] ; then

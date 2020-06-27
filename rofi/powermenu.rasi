@@ -1,8 +1,8 @@
 // Powermenu Config
 
 * {
-  text-font:                            "monospace 29";
-  icon-font:                            "Awesome 124";
+  text-font:                            "Iosevka 29";
+  icon-font:                            "Awesome 112";
 
   option-6-listview-spacing:            10px;
 
@@ -11,11 +11,11 @@
   menu-prompt-padding:                   10px 20px 10px 25px;
   menu-prompt-margin:                    0px 0px 0px -2px;
   menu-element-border:                   2px;
-  menu-element-padding:                  50px 100px 30px -165px;
+  menu-element-padding:                  50px 100px 30px -355px;
 }
 
 #window {
-  width: 40%;
+  width: 38%;
   height: 23%;
 }
 
@@ -82,7 +82,7 @@ textbox-prompt-colon {
   border-color: #000000;
 }
 #element.selected {
-  border-color: #FFFFFF;
+  //border-color: #FFFFFF;
 }
 element.active,
 element.selected.urgent {

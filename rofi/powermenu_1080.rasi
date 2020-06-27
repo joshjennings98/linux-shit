@@ -1,22 +1,22 @@
 // Powermenu Config
 
 * {
-  text-font:                            "Iosevka 32";
-  icon-font:                            "Iosevka 33";
+  text-font:                            "Iosevka 16";
+  icon-font:                            "Awesome 70";
 
   option-6-listview-spacing:            10px;
 
-  menu-window-padding:                   15px 25px;
+  menu-window-padding:                   1px 10px;
   menu-inputbar-margin:                  10px 0px 20px 0px;
   menu-prompt-padding:                   10px 20px 10px 25px;
   menu-prompt-margin:                    0px 0px 0px -2px;
   menu-element-border:                   2px;
-  menu-element-padding:                  0px;
+  menu-element-padding:                  10px 40px 20px -225px;
 }
 
 #window {
-  width: 28%;
-  height: 34%;
+  width: 30%;
+  height: 22%;
 }
 
 * {
@@ -29,7 +29,7 @@
   children: [ listview ];
 }
 #listview {
-  layout: vertical;
+  layout: horizontal;
 }
 #element {
   padding: @option-element-padding;
@@ -64,7 +64,7 @@ textbox-prompt-colon {
 }
 #textbox-prompt-colon {
   expand: false;
-  str: "Date";
+  str: "System";
   background-color: #FFFFFF;
   text-color: #000000;
 }
@@ -82,7 +82,7 @@ textbox-prompt-colon {
   border-color: #000000;
 }
 #element.selected {
-  border-color: #FFFFFF;
+  //border-color: #FFFFFF;
 }
 element.active,
 element.selected.urgent {

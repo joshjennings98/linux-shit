@@ -14,14 +14,14 @@ configuration {
 }
 
 * {
-	text-font: "Iosevka 28";
+	text-font: "Iosevka 20";
 	accent: #FFFFFF;
 
-	inputbar-margin: 15px 0px;
-	prompt-padding: 15px 20px;
+	inputbar-margin: 15px 0px 0px 0px;
+	prompt-padding: 5px 5px;
 	prompt-border: 2px;
-	entry-padding: 18px 15px 15px 15px;
-	list-element-padding: 15px;
+	entry-padding: 8px 5px 5px 5px;
+	list-element-padding: 5px;
 	list-element-margin: 5px;
 	list-element-border: 2px;
 
@@ -29,8 +29,8 @@ configuration {
 }
 
 #window {
-	width: 36%;
-	height: 42%;
+	width: 32%;
+	height: 45%;
 	padding: 0px 10px 0px 15px;
 }
 
