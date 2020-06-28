@@ -131,7 +131,7 @@ gaps inner 9
 #smart_gaps on
 smart_borders on
 
-bindsym $mod+Tab exec rofi -show window -theme ~/linux-stuff/rofi/rofi_config.rasi 
+#bindsym $mod+Tab exec rofi -show window -theme ~/linux-stuff/rofi/rofi_config.rasi 
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart

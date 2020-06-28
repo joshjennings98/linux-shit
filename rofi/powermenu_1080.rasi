@@ -1,26 +1,27 @@
 // Powermenu Config
 
 * {
-  text-font:                            "Iosevka 16";
-  icon-font:                            "Awesome 70";
+  text-font:                            "Iosevka 24";
+  icon-font:                            "Iosevka 24";  
 
   option-6-listview-spacing:            10px;
 
   menu-window-padding:                   1px 10px;
-  menu-inputbar-margin:                  10px 0px 20px 0px;
+  menu-inputbar-margin:                  10px 20px 0px -25px;
   menu-prompt-padding:                   10px 20px 10px 25px;
-  menu-prompt-margin:                    0px 0px 0px -2px;
-  menu-element-border:                   2px;
-  menu-element-padding:                  10px 40px 20px -225px;
+  menu-prompt-margin:                    25px 0px 0px 18px;
+  menu-element-border:                   2px 40px -20px 40px;
+  menu-element-padding:                  10px 40px 20px -110px;
 }
 
 #window {
-  width: 30%;
-  height: 22%;
+  width: 19.7%;
+  height: 29%;
+  background-color: #000D;
 }
 
 * {
-  background-color: #000000;
+  background-color: #00000000;
   text-color: #888888;
   font: @icon-font;
 }
@@ -29,14 +30,14 @@
   children: [ listview ];
 }
 #listview {
-  layout: horizontal;
+  layout: vertical;
 }
 #element {
   padding: @option-element-padding;
-  background-color: #000000;
+  background-color: #00000000;
 }
 #element.selected {
-  background-color: #000000;
+  background-color: #00000000;
   text-color: #FFFFFF;
 }
 
@@ -55,21 +56,23 @@ prompt,
 textbox-prompt-colon {
   padding: @menu-prompt-padding;
   border: 2px;
-  border-color: #FFFFFF;
+  border-color: #FFFFFF00;  
 }
 #prompt {
   margin: @menu-prompt-margin;
-  background-color: #000000;
+  background-color: #FFFFFF11;
   text-color: #FFFFFF;
+  border-radius: 20;
 }
 #textbox-prompt-colon {
   expand: false;
-  str: "System";
-  background-color: #FFFFFF;
+  str: "";
+  background-color: #FFFFFF00;
   text-color: #000000;
 }
 #horibox {
   padding: 0px;
+  
 }
 #listview {
   spacing: @option-6-listview-spacing;
@@ -79,10 +82,11 @@ textbox-prompt-colon {
   font: @icon-font;
   border: @menu-element-border;
   padding: @menu-element-padding;
-  border-color: #000000;
+  border-color: #00000000;
 }
 #element.selected {
-  //border-color: #FFFFFF;
+  background-color: #FFFFFF11;
+  border-radius: 20;
 }
 element.active,
 element.selected.urgent {
