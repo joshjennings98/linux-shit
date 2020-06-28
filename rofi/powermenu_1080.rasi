@@ -17,7 +17,7 @@
 #window {
   width: 19.7%;
   height: 29%;
-  background-color: #000D;
+  background-color: #000;
 }
 
 * {
