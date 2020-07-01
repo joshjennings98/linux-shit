@@ -16,7 +16,6 @@
 [variables]
 bar-height = 3%
 
-
 ;=====================================================
 ;   fonts
 ;=====================================================
@@ -141,8 +140,8 @@ tail = true
 label = "%{F#fff} %output% %{F-}"
 exec = date +'%a %d %b %Y'
 interval = 1
-click-left = ~/linux-stuff/scripts/cal.sh
-click-right = ~/linux-stuff/scripts/cal.sh 1
+click-left = ~/linux-stuff/scripts/rofiScripts.sh calendar now
+click-right = ~/linux-stuff/scripts/rofiScripts.sh calendar next
 
 ;=====================================================
 ;   time module 
@@ -162,9 +161,9 @@ click-left = timestamp=$(date +%Y-%m-%d-%Hh%Mm%Ss%3N) && maim -s ~/Pictures/scre
 type = custom/script
 tail = true
 label = "%output% "
-exec = bash ~/linux-stuff/scripts/vpn.sh
+exec = ~/linux-stuff/scripts/polybarScripts.sh statusVPN
 interval = 1
-click-left = bash ~/linux-stuff/scripts/toggleExpressVPN.sh & bash ~/linux-stuff/scripts/vpn.sh
+click-left = ~/linux-stuff/scripts/polybarScripts.sh toggleVPN & ~/linux-stuff/scripts/polybarScripts.sh statusVPN
 
 ;=====================================================
 ;   internet module
@@ -174,7 +173,7 @@ type = custom/script
 tail = true
 ;device = "wlp1s0"
 label = "%output% "
-exec = bash ~/linux-stuff/scripts/getInternetStatus.sh
+exec = ~/linux-stuff/scripts/polybarScripts.sh internetStatus
 interval = 1
 click-left = xterm -e nmtui
 
@@ -204,8 +203,8 @@ ramp-capacity-4 = 
 type = custom/script
 label = "%{F#86c5da}%output% %{F-}"
 exec = echo " "
-click-left = bash ~/linux-stuff/scripts/launchRofi.sh
-click-right = sh ~/linux-stuff/scripts/powermenu.sh
+click-left = ~/linux-stuff/scripts/rofiScripts.sh dmenu
+click-right = ~/linux-stuff/scripts/rofiScripts.sh power
 
 ;=====================================================
 ;   i3 workspaces module 

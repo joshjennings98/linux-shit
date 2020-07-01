@@ -114,7 +114,7 @@ exec --no-startup-id ~/linux-stuff/scripts/randomwallpapers.sh
 bindsym $mod+l exec "scrot /tmp/screenshot.png ; convert /tmp/screenshot.png -blur 0x8 /tmp/screenshotblur.png ; i3lock -i /tmp/screenshotblur.png"
 
 # start rofi
-bindsym $mod+d exec --no-startup-id bash ~/linux-stuff/scripts/launchRofi.sh
+bindsym $mod+d exec --no-startup-id "~/linux-stuff/scripts/rofiScripts.sh dmenu"
 
 # compton/picom-rounded-corners
 exec_always killall picom ; picom --corner-radius 10 --config /etc/xdg/compton.conf #--backend glx --blur-method kawase --blur-background --blur-strength 4
@@ -131,14 +131,12 @@ gaps inner 9
 #smart_gaps on
 smart_borders on
 
-#bindsym $mod+Tab exec rofi -show window -theme ~/linux-stuff/rofi/rofi_config.rasi 
-
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec "sh ~/linux-stuff/scripts/powermenu.sh"
+bindsym $mod+Shift+e exec --no-startup-id "~/linux-stuff/scripts/rofiScripts.sh power"
 
 # Volume keys
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
