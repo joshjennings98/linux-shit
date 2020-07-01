@@ -242,7 +242,6 @@ then
 	chmod +x ~/linux-stuff/scripts/codeextensions.sh
 	chmod +x ~/linux-stuff/scripts/swapscreens.sh
 	chmod +x ~/linux-stuff/scripts/randomwallpapers.sh
-	chmod +x ~/linux-stuff/scripts/powermenu.sh
 	chmod +x ~/linux-stuff/scripts/i3-auto-layout
 	chmod +x ~/linux-stuff/scripts/rofiScripts.sh
 	chmod +x ~/linux-stuff/scripts/polybarScripts.sh
