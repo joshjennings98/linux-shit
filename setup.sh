@@ -205,7 +205,7 @@ then
 	# Polybar
 	mkdir ~/.config/polybar
 	cp ~/linux-stuff/polybar/config ~/.config/polybar
-	cp ~/linux-stuff/polybar/launch.sh ~/.config/polybar
+	cp ~/linux-stuff/scripts/launchPolybar.sh ~/.config/polybar/launch.sh
 
 	# Move ranger stuff
 	mkdir ~/.config/ranger
@@ -245,7 +245,6 @@ then
 	chmod +x ~/linux-stuff/scripts/powermenu.sh
 	chmod +x ~/linux-stuff/scripts/i3-auto-layout
 	chmod +x ~/linux-stuff/scripts/rofiScripts.sh
-	chmod +x ~/linux-stuff/scripts/rpolybarScripts.sh
 
 	# Reload .bashrc and stuff
 	source ~/.bashrc
