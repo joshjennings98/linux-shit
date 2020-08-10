@@ -1,55 +1,88 @@
 #!/usr/bin/env bash
 
-installCommand="sudo apt-get install -y"
-checkIfInstalled="dpkg-query -l"
-notInstalledMessage="no packages found"
-altInstallCommand="sudo apt-get install -y"
-
 # Check valid inputs
 if [ "$#" -ne 1 ] ; then
-    echo "Invalid number of arguments, a file must be provided."
+    echo "Invalid number of arguments, a config file must be provided."
     exit 1
 elif ! [ -f "$1" ]; then
     echo "The file '$1' does not exist."
     exit 1
-fi
+fi   
 
-# Read packages from file to $packages
-readarray -t packages < $1 # -t will strip newlines
+declare -A commands
 
-{   
 # Set up arrays to track installed stuff 
+packages=()
 done=()
 notInstalled=()
 stillNotInstalled=()
- 
-# Attempt to install each package and then check whether it was installed
-for package in ${packages[@]}
-do
-    $installCommand $package
+packagesFlag=0
 
-    # Check whether package installed
-    if echo $($checkIfInstalled $package 2>&1) | grep -q "$notInstalledMessage" ; then
-        notInstalled+=( $package )
-    else
-        done+=( $package )
-    fi
-done
+# Shitty if else thing for parsing config file
+{
+    {
+        while read
+        do 
+           if echo "$REPLY" | grep -P "#.*?" ; then
+                echo "Comment: $REPLY"
+           elif [ "$packagesFlag" -eq 1 ] ; then # Install packages        
+               if echo "$REPLY" | grep "=" ; then
+                   key=${REPLY%% = *}
+                   value=${REPLY#* = }
+                   commands[$key]=$value
+                   packagesFlag=0
+               else
+                   packages+=( ${REPLY#* } )
+               fi
+           # Create commands 
+           elif echo "$REPLY" | grep -P "packages = .*?" ; then
+               packagesFlag=1
+               packages+=( ${REPLY#* = } )
+           elif echo "$REPLY" | grep -P "packages = " ; then
+               packagesFlag=1
+           elif echo "$REPLY" | grep -P ".*?( = ).*?" ; then
+               key=${REPLY%% = *}
+               value=${REPLY#* = }
+               commands[$key]=$value
+               packagesFlag=0
+           fi
+           
+        done
+    } < $1   
 
-# Try alternate install for packages not installed
-for package in ${notInstalled[@]}
-do
-    $altInstallCommand $package
-    
-    # Check whether package installed
-    if echo $($checkIfInstalled $package 2>&1) | grep -q "$notInstalledMessage" ; then
-        stillNotInstalled+=( $package )
-    else
-        done+=( $package )
-    fi
-done
+    # Set commands
+    installCommand="${commands[install-command]}"
+    checkIfInstalled="${commands[check-installed]}"
+    notInstalledMessage="${commands[install-failure-string]}"
+    altInstallCommand="${commands[alt-install-command]}" 
+     
+    # Attempt to install each package and then check whether it was installed
+    for package in ${packages[@]}
+    do
+        $installCommand $package
 
-} &> /dev/null # Don't print output from this section
+        # Check whether package installed
+        if echo $($checkIfInstalled $package 2>&1) | grep -q "$notInstalledMessage" ; then
+            notInstalled+=( $package )
+        else
+            done+=( $package )
+        fi
+    done
+
+    # Try alternate install for packages not installed
+    for package in ${notInstalled[@]}
+    do
+        $altInstallCommand $package
+        
+        # Check whether package installed
+        if echo $($checkIfInstalled $package 2>&1) | grep -q "$notInstalledMessage" ; then
+            stillNotInstalled+=( $package )
+        else
+            done+=( $package )
+        fi
+    done
+
+} &> /dev/null # Don't print output from this section (for debug comment out the &>)
 
 {
 echo "Installed the following packages:"
