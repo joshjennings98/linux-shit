@@ -1,4 +1,4 @@
-# setup.py (requires Python 3.8)
+# setup.py
 
 import subprocess, sys, os, shutil
 from typing import Dict, List
@@ -65,8 +65,7 @@ def install_packages(installCommand : str, packages : List[str], altInstallComma
                 print(f"Could not install {package}.")
                 notInstalled.append(package)
 
-    print(f"Installed: {installed}")
-    print(f"Not Installed: {notInstalled}")
+    print(f"Installed: {installed}\nNot Installed: {notInstalled}")
 
 
 def copy_file(src : str, dst : str = "") -> None:
@@ -156,11 +155,13 @@ def execute(script : str) -> None:
     """
     Run `script`.
     """
-    lines = [line.strip().split(' ') for line in script.split('\n') if (stripped := line.strip()) is not '' and stripped[0] != '#']
+    lines = []
 
-    for line in lines:
-        print(f"Running '{' '.join(line)}'.")
-        subprocess.check_output(line)
+    for line in script.split('\n'):
+        stripped = line.strip()
+        if stripped != '' and stripped[0] != '#':
+            print(f"Running '{stripped}'.")
+            subprocess.check_output(stripped.split(' '))
 
 
 def shutdown_prompt() -> None:
