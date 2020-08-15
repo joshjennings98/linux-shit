@@ -18,132 +18,145 @@ def main(): # Modify stuff in main to change how stuff is set up
 
     install_packages(install_command, packages, alt_install_command)
 
-    copy_folder("linux-stuff/wallpapers/", "wallpapers") # Leave out ~/ because subprocess doesn't like it
-    copy_folder("linux-stuff/rofi/", "rofi")
-    copy_folder("linux-stuff/i3/", ".config/i3")
-    copy_folder("linux-stuff/ranger/", ".config/ranger")
-    copy_folder("linux-stuff/polybar/", ".config/polybar")
-    copy_folder("linux-stuff/system stuff/")
-
-    copy_file("linux-stuff/fonts/Font Awesome 5 Free-Solid-900.otf", "/usr/share/fonts/opentype")
+    copy_folder("~/linux-stuff/wallpapers/", "~/wallpapersjjj") 
+    copy_file("~/linux-stuff/wallpapers/nebula.jpg", "~/wallpapersXX55")
+    
+    copy_folder("~/linux-stuff/rofi/", "~/rofi")
+    copy_folder("~/linux-stuff/i3/", "~/.config/i3")
+    copy_folder("~/linux-stuff/ranger/", "~/.config/ranger")
+    copy_folder("~/linux-stuff/polybar/", "~/.config/polybar")
+    copy_folder("~/linux-stuff/system stuff/")
+    
+    copy_file("~/linux-stuff/fonts/Font Awesome 5 Free-Solid-900.otf", "/usr/share/fonts/opentype")
     execute("sudo fc-cache -f -v")
 
-    copy_file("linux-stuff/vscode/settings.json", ".config/Code/User/")
-    execute("bash linux-stuff/scripts/codeextensions.sh -l vscode/vscodeextensions.txt")
+    copy_file("~/linux-stuff/vscode/settings.json", "~/.config/Code/User/")
+    execute("bash ~/linux-stuff/scripts/codeextensions.sh -l ~/linux-stuff/vscode/vscodeextensions.txt")
 
     download_and_run("http://installer.jdownloader.org/JD2SilentSetup_x64.sh")
 
-    make_folder_contents_executable("linux-stuff/scripts/")
+    make_folder_contents_executable("~/linux-stuff/scripts/")
 
     shutdown_prompt()
+    
 
-
-def install_packages(installCommand : str, packages : List[str], altInstallCommand : str = "") -> None:
+def install_packages(install : str, packages : List[str], alt_install : str = "") -> None:
     """
     Install the required packages:
-    - `installCommand`: the default command used to install programs. In a form to be used with `subprocess.run()` or subprocess.check_output()`.
-    - `altInstallCommand`: the secondary command used to install programs if `install_command` can't install a package.
+    - `install`: the default command used to install programs.
+    - `alt_install`: command used to install programs if `install` fails, defaults to `install`.
     - `packages`: the list of programs to install.
+    Commands are called using `subprocess.run()` or subprocess.check_output()`.
     """
-    install_command = installCommand.strip().split(' ')
-    alt_install_command = install_command if altInstallCommand == "" else altInstallCommand.strip().split(' ')
+    alt_install = install if alt_install == "" else alt_install
+    install_command = install.strip().split(' ')
+    alt_install_command = alt_install.strip().split(' ')
     
     installed = []
-    notInstalled = []
+    not_installed = []
 
     for package in packages:
         try:
-            print(f"Attempting to install {package} using '{' '.join(install_command)}'.")
+            print(f"Attempting to install {package} using '{install}'.")
             subprocess.check_output(install_command + [package])
             installed.append(package)
         except:
             try:
-                print(f"Could not install {package} with '{' '.join(install_command)}'.\nAttempting to install {package} using '{' '.join(alt_install_command)}'.")
+                print(f"Could not install {package} with '{install}', trying with '{alt_install}'.")
                 subprocess.check_output(alt_install_command + [package])
                 installed.append(package)
             except:
                 print(f"Could not install {package}.")
-                notInstalled.append(package)
+                not_installed.append(package)
 
-    print(f"Installed: {installed}\nNot Installed: {notInstalled}")
+    print(f"Installed: {installed}\nNot Installed: {not_installed}")
 
 
-def copy_file(src : str, dst : str = "") -> None:
+def copy_file(src : str, dst : str = "~") -> None:
     """
-    Copy a file located at `src` to the directory `dst`. If the directory doesn't exist, it'll be created.
-    Default destination found using `os.path.expanduser("~")`
+    Copy a file located at `src` to the directory `dst`. 
+    If the directory doesn't exist, it'll be created.
+    Default destination `~`.
     """
-    dst = dst if dst != "" else os.path.expanduser("~")
-    destination = Path(dst)
+    source = Path(os.path.expanduser(src))
+    destination = Path(os.path.expanduser(dst))
+
+    if not source.is_file():
+        raise Exception(f"{src} is not a valid file")
 
     print(f"Copying file {src} to {dst}.")
 
     if not destination.is_dir():
         destination.mkdir()
     try:
-        shutil.copy2(src, dst)
+        shutil.copy2(source, destination)
     except:
-        check = input(f"Couldn't copy {src} to {dst}. This may be due to a lack of permissions. Would you like to try with 'sudo'? (y/n)\n")
+        check = input(f"Couldn't copy {src} to {dst}. Would you like to try with 'sudo'? (y/N)\n")
         if check in 'n':
             print(f"{src} was not copied to {dst}.")
         else:
             try:
-                subprocess.check_output(["sudo", "cp", "-f", src, dst])
+                subprocess.check_output(["sudo", "cp", "-f", source, destination])
             except:
                 print(f"Could not copy {src} to {dst} with sudo.")
 
 
-def copy_folder(srcFolder : str, dstFolder : str = "") -> None:
+def copy_folder(src : str, dst : str = "~") -> None:
     """
-    Copy all files located in the directory `src` to the directory `dst`. If the directory doesn't exist, it'll be created.
-    Default destination found using `os.path.expanduser("~")`
+    Copy all files located in the directory `src` to the directory `dst`. 
+    If the directory doesn't exist, it'll be created.
+    Default destination `~`.
     """
-    dstFolder = dstFolder if dstFolder != "" else os.path.expanduser("~")
-    destination = Path(dstFolder)
+    source = Path(os.path.expanduser(src))
+    destination = Path(os.path.expanduser(dst))
 
-    print(f"Copying files in {srcFolder} to {dstFolder}.")
+    print(f"Copying files in {src} to {dst}.")
 
     if not destination.is_dir():
         destination.mkdir()
-    for file in os.listdir(path=srcFolder):
-        if Path(f"{srcFolder}/{file}").is_file():
-            shutil.copy2(f"{srcFolder}/{file}", dstFolder)
-        elif Path(f"{srcFolder}/{file}").is_dir():
-            copy_folder(f"{srcFolder}/{file}", f"{dstFolder}/{file}")
+    for file in os.listdir(path=source):
+        if Path(f"{source}/{file}").is_file():
+            print(f"\tCopying {src}{file} to {dst}.")
+            shutil.copy2(f"{source}/{file}", destination)
+        elif Path(f"{source}/{file}").is_dir():
+            copy_folder(f"{source}/{file}", f"{destination}/{file}")
 
 
-def make_executable(file : str) -> None:
+def make_executable(src : str) -> None:
     """
     Make a file executable.
     """
-    if not Path(file).is_file():
-        raise Exception(f"{file} is not a valid file")
+    file = Path(os.path.expanduser(src))
 
-    print(f"Making {file} executable.")
-    subprocess.run(["chmod", "+x", src])
+    if not file.is_file():
+        raise Exception(f"{src} is not a valid file")
+
+    print(f"Making {src} executable.")
+    subprocess.run(["chmod", "+x", file])
 
 
-def make_folder_contents_executable(folder : str) -> None:
+def make_folder_contents_executable(src : str) -> None:
     """
     Make all files in a folder executable.
     """
-    if not Path(folder).is_dir():
-        raise Exception(f"{folder} is not a valid folder")
+    folder = Path(os.path.expanduser(src))
 
-    print(f"In folder '{Path(folder)}':")
+    if not folder.is_dir():
+        raise Exception(f"{src} is not a valid folder")
+
+    print(f"In folder '{src}':")
     
     for file in os.listdir(path=folder):
-        print(f"    - Making '{file}' executable.")
+        print(f"\tMaking '{file}' executable.")
         subprocess.run(["chmod", "+x", f"{folder}/{file}"])
 
 
-def download_and_run(url : str, dstFolder : str = "") -> None:
+def download_and_run(url : str, dst : str = "~/Downloads") -> None:
     """
     Use wget to download a script and then execute it.
-    Default destination found using `os.path.expanduser("~/Downloads")`
+    Default destination `~/Downloads`.
     """
-    dstFolder = dstFolder if dstFolder != "" else os.path.expanduser("~/Downloads")
-    destination = Path(dstFolder)
+    destination = Path(os.path.expanduser(dst))
 
     file = url.split('/')[-1]
 
@@ -155,20 +168,21 @@ def execute(script : str) -> None:
     """
     Run `script`.
     """
-    lines = []
+    def fix_path(word : str) -> str:
+        return os.path.expanduser(word) if '/' in word else word
 
     for line in script.split('\n'):
         stripped = line.strip()
         if stripped != '' and stripped[0] != '#':
             print(f"Running '{stripped}'.")
-            subprocess.check_output(stripped.split(' '))
+            subprocess.run([fix_path(word) for word in stripped.split(' ')])
 
 
 def shutdown_prompt() -> None:
     """
     Prompt a shutdown.
     """
-    check = input("You should restart your computer to finalise changes (sourcing bashrc and Xresources etc.), would you like to now? (y/n)\n")
+    check = input("Setup complete - would you like to reboot? (y/N)\n")
     if check in 'n':
         exit()
     else:
