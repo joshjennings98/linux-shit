@@ -1,6 +1,4 @@
-# LINUX STUFF
-
-# My Useful Linux Stuff
+# Josh's Linux Stuff
 
 This repo contains my useful linux stuff like my `.bashrc` and other scripts/config files. It also contains an install script for setting up new computers with the stuff I like to have.
 
@@ -9,16 +7,16 @@ This repo contains my useful linux stuff like my `.bashrc` and other scripts/con
 ### Pre-requisites:
 
 There are several prerequisites for this script:
-* Python 3.8 (yay walrus operator)
+* Python 3
 * Bash
 
 ### Usage
 
-To set up a new linux computer, adjust the packages and commands and stuff in `main()` of `setup.py` and then run `python3.8 linux-stuff/setup.py` from `~`.:
+To set up a new linux computer, adjust the packages and commands and stuff in `main()` of `setup.py`, then run the following:
 
 ```bash
 cd ~
 git clone https://github.com/joshjennings98/linux-stuff
-python3.8 linux-stuff/setup.py
+python3 linux-stuff/setup.py
 ```
 
