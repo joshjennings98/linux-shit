@@ -18,9 +18,7 @@ def main(): # Modify stuff in main to change how stuff is set up
 
     install_packages(install_command, packages, alt_install_command)
 
-    copy_folder("~/linux-stuff/wallpapers/", "~/wallpapersjjj") 
-    copy_file("~/linux-stuff/wallpapers/nebula.jpg", "~/wallpapersXX55")
-    
+    copy_folder("~/linux-stuff/wallpapers/", "~/wallpapers")     
     copy_folder("~/linux-stuff/rofi/", "~/rofi")
     copy_folder("~/linux-stuff/i3/", "~/.config/i3")
     copy_folder("~/linux-stuff/ranger/", "~/.config/ranger")
@@ -46,7 +44,7 @@ def install_packages(install : str, packages : List[str], alt_install : str = ""
     - `install`: the default command used to install programs.
     - `alt_install`: command used to install programs if `install` fails, defaults to `install`.
     - `packages`: the list of programs to install.
-    Commands are called using `subprocess.run()` or subprocess.check_output()`.
+    Commands are called using `subprocess.check_output()`.
     """
     alt_install = install if alt_install == "" else alt_install
     install_command = install.strip().split(' ')
