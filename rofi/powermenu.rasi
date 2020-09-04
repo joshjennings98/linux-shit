@@ -11,7 +11,7 @@
   menu-prompt-padding:                   -123px 20px 27px 25px;
   menu-prompt-margin:                    35px 0px 10px 28px;
   menu-element-border:                   0px 75px 20px 80px;
-  menu-element-padding:                  20px 40px 20px -80px;
+  menu-element-padding:                  20px 40px 20px 0px;
 }
 
 #window {
