@@ -1,0 +1,15 @@
+#! /bin/bash
+
+feh --bg-fill ~/Downloads/material.jpg &
+
+#while true; do
+#	feh --randomize --bg-fill ~/wallpapers/*
+#	sleep 300
+#done &
+
+slstatus &
+
+picom --corner-radius 14 --round-borders 14 &
+
+exec dwm
+

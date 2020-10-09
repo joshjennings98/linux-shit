@@ -7,38 +7,64 @@ from pathlib import Path
 
 def main(): # Modify stuff in main to change how stuff is set up
 
-    install_command = "sudo apt-get install -y"
-    alt_install_command = "sudo snap install"
-
     packages = [
         "vim",
         "vlc",
-        "tesdafklsnmd"
+        "amixer",
+        "alsamixer",
+        "feh",
+        "imlib2-dev",
+        "code"
     ]
 
-    install_packages(install_command, packages, alt_install_command)
-
-    copy_folder("~/linux-stuff/wallpapers/", "~/wallpapers")     
-    copy_folder("~/linux-stuff/rofi/", "~/rofi")
-    copy_folder("~/linux-stuff/i3/", "~/.config/i3")
-    copy_folder("~/linux-stuff/ranger/", "~/.config/ranger")
-    copy_folder("~/linux-stuff/polybar/", "~/.config/polybar")
-    copy_folder("~/linux-stuff/system stuff/")
+    install_packages("sudo apt-get install -y", packages, "sudo snap install")
     
-    copy_file("~/linux-stuff/fonts/Font Awesome 5 Free-Solid-900.otf", "/usr/share/fonts/opentype")
-    execute("sudo fc-cache -f -v")
+    pip-packages = [
+        "ueberzug",
+        "ranger-fm"
+    ]
+    
+    install_packages("pip3 install", pip-packages, "sudo -H pip3 install")  
+    
+    copy_file("~/linux-stuff/system/fonts/Font Awesome 5 Free-Solid-900.otf", "/usr/share/fonts/opentype")
+    copy_file("~/linux-stuff/system/fonts/iosevka-regular.ttf", "/usr/local/share/fonts")
+    execute("sudo fc-cache -f -v") 
+    
+    copy_folder("~/linux-stuff/applications/ranger/", "~/.config/ranger")
+    
+    copy_folder("~/linux-stuff/system/")
+    
+    copy_file("~/linux-stuff/applications/vscode/settings.json", "~/.config/Code/User/")
+    execute("bash ~/linux-stuff/scripts/codeextensions.sh -l ~/linux-stuff/applications/vscode/vscodeextensions.txt")
+    
+    copy_folder("~/linux-stuff/applications/dwm/", "~")
+    copy_folder("~/linux-stuff/applications/dmenu/", "~")
+    copy_folder("~/linux-stuff/applications/slock/", "~")
+    copy_folder("~/linux-stuff/applications/st/", "~")
+    copy_folder("~/linux-stuff/applications/slstatus/", "~")
+    make("~/dwm")
+    make("~/dmenu")
+    make("~/slock")
+    make("~/st")
+    make("~/slstatus")
+    
+    copy_file("~/linux-stuff/scripts/statusMenu.sh", "~/dwm")
+    copy_file("~/linux-stuff/scripts/toggleVolume.sh", "~/dwm")
+    copy_file("~/linux-stuff/scripts/powerMenu.sh", "~/dwm")
 
-    copy_file("~/linux-stuff/vscode/settings.json", "~/.config/Code/User/")
-    execute("bash ~/linux-stuff/scripts/codeextensions.sh -l ~/linux-stuff/vscode/vscodeextensions.txt")
+    clone("https://github.com/yshui/picom", "~/picom")
+    make("~/picom")
 
     download_and_run("http://installer.jdownloader.org/JD2SilentSetup_x64.sh")
-
+    
     make_folder_contents_executable("~/linux-stuff/scripts/")
+    
+    copy_folder("~/linux-stuff/wallpapers/", "~/wallpapers")     
 
     shutdown_prompt()
     
 
-def install_packages(install : str, packages : List[str], alt_install : str = "") -> None:
+def install_packages(install : str, packages : List[str] = [], alt_install : str = "") -> None:
     """
     Install the required packages:
     - `install`: the default command used to install programs.
@@ -46,6 +72,11 @@ def install_packages(install : str, packages : List[str], alt_install : str = ""
     - `packages`: the list of programs to install.
     Commands are called using `subprocess.check_output()`.
     """
+    
+    if not install or packages == []:
+        print(f"You must provide an install command and a list of packages to install.")
+        return
+    
     alt_install = install if alt_install == "" else alt_install
     install_command = install.strip().split(' ')
     alt_install_command = alt_install.strip().split(' ')
@@ -105,6 +136,11 @@ def copy_folder(src : str, dst : str = "~") -> None:
     If the directory doesn't exist, it'll be created.
     Default destination `~`.
     """
+    
+    if not src:
+        print(f"You must provide a source directory.")
+        return
+    
     source = Path(os.path.expanduser(src))
     destination = Path(os.path.expanduser(dst))
 
@@ -124,6 +160,11 @@ def make_executable(src : str) -> None:
     """
     Make a file executable.
     """
+    
+    if not src:
+        print(f"You must provide a source file to make executable.")
+        return
+    
     file = Path(os.path.expanduser(src))
 
     if not file.is_file():
@@ -137,6 +178,11 @@ def make_folder_contents_executable(src : str) -> None:
     """
     Make all files in a folder executable.
     """
+    
+    if not src:
+        print(f"You must provide a source folder whose contents you wish to make executable.")
+        return
+    
     folder = Path(os.path.expanduser(src))
 
     if not folder.is_dir():
@@ -156,10 +202,46 @@ def download_and_run(url : str, dst : str = "~/Downloads") -> None:
     """
     destination = Path(os.path.expanduser(dst))
 
+    if not url:
+        print(f"You must provide an url to download with wget.")
+        return
+        
     file = url.split('/')[-1]
 
-    subprocess.run(["wget", "-P", destination, url])
-    subprocess.check_output(["bash", f"{destination}/{file}"])
+    try:
+        subprocess.run(["wget", "-P", destination, url])
+        subprocess.check_output(["bash", f"{destination}/{file}"])
+    except:
+        print(f"Could not download and run {url}.")
+            
+
+def clone(url : str, dst : str = ".") -> None:
+    """
+    Clone a git directory.
+    Default destination `.`.
+    """
+    destination = Path(os.path.expanduser(dst))
+    
+    if not url:
+        print(f"You must provide an url to clone.")
+        return
+
+    try:
+        subprocess.run(["git", "clone", url, destination])
+    except:
+        print(f"Could not clone {url} to {dst}.")
+
+
+def make(loc : str = ".") -> None:
+    """
+    CD into `loc` and make the contents assuming there is a makefile.
+    """
+    location = Path(os.path.expanduser(loc))
+    
+    try:
+        subprocess.check_output(["make", "-C", loc])
+    except:
+        print(f"Could not make {loc}")
 
 
 def execute(script : str) -> None:
@@ -168,6 +250,10 @@ def execute(script : str) -> None:
     """
     def fix_path(word : str) -> str:
         return os.path.expanduser(word) if '/' in word else word
+        
+    if not script:
+        print(f"You must provide a script to execute.")
+        return
 
     for line in script.split('\n'):
         stripped = line.strip()
