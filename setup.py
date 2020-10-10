@@ -9,22 +9,61 @@ def main(): # Modify stuff in main to change how stuff is set up
 
     packages = [
         "vim",
-        "vlc",
-        "amixer",
-        "alsamixer",
+        "mpv",
+        "alsa-base",
+        "alsa-utils",
         "feh",
-        "imlib2-dev",
+        "network-manager",
+        "htop",
+        "steam",
+        "expressvpn",
+        "maim",
+        #"blueman",
+        "pinta",
+        "calibre",
+        "firefox",
+        "discord",
+        "keepassxc",
+        "libimlib2-dev",
+        "libxext-dev",
+        "libxcb1-dev",
+        "libxcb-damage0-dev",
+        "libxcb-xfixes0-dev",
+        "libxcb-shape0-dev",
+        "libxcb-render-util0-dev",
+        "libxcb-render0-dev",
+        "libxcb-randr0-dev",
+        "libxcb-composite0-dev",
+        "libxcb-image0-dev",
+        "libxcb-present-dev",
+        "libxcb-xinerama0-dev",
+        "libxcb-glx0-dev",
+        "libpixman-1-dev",
+        "libdbus-1-dev",
+        "libconfig-dev",
+        "libgl1-mesa-dev",
+        "libpcre2-dev",
+        "libevdev-dev",
+        "uthash-dev",
+        "libev-dev",
+        "libx11-xcb-dev",
+        "libx11-dev",
+        "xorg-dev",
+        "build-essential",
+        "asciidoc",
+        "ninja",
+        "meson",
         "code"
     ]
 
     install_packages("sudo apt-get install -y", packages, "sudo snap install")
     
-    pip-packages = [
+    pip_packages = [
         "ueberzug",
         "ranger-fm"
     ]
     
-    install_packages("pip3 install", pip-packages, "sudo -H pip3 install")  
+    install_packages("pip3 install", pip_packages, "sudo -H pip3 install")  
     
     copy_file("~/linux-stuff/system/fonts/Font Awesome 5 Free-Solid-900.otf", "/usr/share/fonts/opentype")
     copy_file("~/linux-stuff/system/fonts/iosevka-regular.ttf", "/usr/local/share/fonts")
@@ -47,13 +86,19 @@ def main(): # Modify stuff in main to change how stuff is set up
     make("~/slock")
     make("~/st")
     make("~/slstatus")
+
+    execute("sudo mv ~/dwm/dwm.desktop /usr/share/xsessions/")
     
     copy_file("~/linux-stuff/scripts/statusMenu.sh", "~/dwm")
     copy_file("~/linux-stuff/scripts/toggleVolume.sh", "~/dwm")
     copy_file("~/linux-stuff/scripts/powerMenu.sh", "~/dwm")
 
+    # See information here: https://github.com/yshui/picom
     clone("https://github.com/yshui/picom", "~/picom")
-    make("~/picom")
+    execute("git submodule update --init --recursive")
+    execute("meson --buildtype=release . build")
+    execute("ninja -C build")
+    execute("ninja -C build install")
 
     download_and_run("http://installer.jdownloader.org/JD2SilentSetup_x64.sh")
     
