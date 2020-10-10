@@ -5,7 +5,7 @@ from typing import Dict, List
 from pathlib import Path
 
 
-def main(): # Modify stuff in main to change how stuff is set up
+def main(): # Modify stuff in main to change how stuff is set up. Should move these into distro specific functions than can be run depending on distro
 
     packages = [
         "vim",
@@ -51,19 +51,22 @@ def main(): # Modify stuff in main to change how stuff is set up
         "xorg-dev",
         "build-essential",
         "asciidoc",
-        "ninja",
+        "ninja-build",
         "meson",
         "code"
     ]
-
-    install_packages("sudo apt-get install -y", packages, "sudo snap install")
     
     pip_packages = [
         "ueberzug",
         "ranger-fm"
     ]
+
+    execute("sudo add-apt-repository universe")
+    execute("sudo add-apt-repository multiverse")
+    execute("sudo apt-get update")
     
-    install_packages("pip3 install", pip_packages, "sudo -H pip3 install")  
+    install_packages("sudo apt-get install -y", packages, "sudo snap install")
+    install_packages("pip3 install", pip_packages, "sudo -H pip3 install") 
     
     copy_file("~/linux-stuff/system/fonts/Font Awesome 5 Free-Solid-900.otf", "/usr/share/fonts/opentype")
     copy_file("~/linux-stuff/system/fonts/iosevka-regular.ttf", "/usr/local/share/fonts")
