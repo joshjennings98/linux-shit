@@ -12,9 +12,11 @@ set title                           " reflect name of file in window title
 " move down visually rather than skipping wrapped lines (may need to modify <UP> <Down> if using omnifunc)
 nmap j gj
 nmap <Down> gj
+imap <Down> <C-o>gj
 " same as above but for up
 nmap k gk                           
 nmap <Up> gk
+imap <Up> <C-o>gk
 
 set backspace=indent,eol,start      " allow backspacing over indention, line breaks and insertion start.
 set confirm                         " confirm when closing unsaved file
