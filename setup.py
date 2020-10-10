@@ -96,6 +96,8 @@ def main(): # Modify stuff in main to change how stuff is set up. Should move th
     copy_file("~/linux-stuff/scripts/toggleVolume.sh", "~/dwm")
     copy_file("~/linux-stuff/scripts/powerMenu.sh", "~/dwm")
 
+    copy_file("~/linux-stuff/system/.vimrc", "~")
+
     # See information here: https://github.com/yshui/picom
     clone("https://github.com/yshui/picom", "~/picom")
     execute("git submodule update --init --recursive")
