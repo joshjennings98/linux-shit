@@ -1,6 +1,6 @@
 #! /bin/bash
 
-feh --bg-fill ~/Downloads/material.jpg &
+feh --bg-fill ~/wallpapers/wayofkings.png &
 
 #while true; do
 #	feh --randomize --bg-fill ~/wallpapers/*
