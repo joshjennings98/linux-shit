@@ -7,6 +7,8 @@ feh --bg-fill ~/wallpapers/mountains.jpg &
 #	sleep 300
 #done &
 
+unclutter &
+
 slstatus &
 
 picom --corner-radius 14 --round-borders 14 &
