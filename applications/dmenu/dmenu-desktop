@@ -479,7 +479,7 @@ EOT
     $cmd = qq|"$exec"|;
 }
 
-my @term_programs = ('ranger', 'htop');
+my @term_programs = ('ranger', 'htop', 'mocp');
 
 if ( grep( /^$exec$/, @term_programs ) ) {
 	system("st -e $exec");

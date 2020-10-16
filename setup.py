@@ -11,10 +11,12 @@ def main(): # Modify stuff in main to change how stuff is set up. Should move th
         "vim",
         "mpv",
         "alsa-base",
+        "zathura",
         "alsa-utils",
         "feh",
         "network-manager",
         "htop",
+        "moc",
         "steam",
         "expressvpn",
         "maim",
@@ -23,6 +25,7 @@ def main(): # Modify stuff in main to change how stuff is set up. Should move th
         "calibre",
         "firefox",
         "discord",
+        "pandoc",
         "keepassxc",
         "libimlib2-dev",
         "libxext-dev",
@@ -96,7 +99,8 @@ def main(): # Modify stuff in main to change how stuff is set up. Should move th
     copy_file("~/linux-stuff/scripts/toggleVolume.sh", "~/dwm")
     copy_file("~/linux-stuff/scripts/powerMenu.sh", "~/dwm")
 
-    copy_file("~/linux-stuff/system/.vimrc", "~")
+    copy_file("~/linux-stuff/applications/vim/.vimrc", "~")
+    copy_file("~/linux-stuff/applications/moc/config", "~/.moc")
 
     # See information here: https://github.com/yshui/picom
     clone("https://github.com/yshui/picom", "~/picom")
