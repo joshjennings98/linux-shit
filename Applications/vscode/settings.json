@@ -1,0 +1,19 @@
+{
+    "window.zoomLevel": 0,
+    "workbench.startupEditor": "newUntitledFile",
+    "git.autofetch": true,
+    "window.menuBarVisibility": "toggle",
+    "editor.fontFamily": "Iosevka",
+    "editor.fontSize": 16,
+    "editor.wordWrap": "on",
+    "editor.wordBasedSuggestions": true,
+    "editor.snippetSuggestions": "top",
+    "editor.suggestSelection":"first",
+    "markdown-preview-enhanced.previewTheme": "solarized-dark.css",
+    "workbench.colorTheme": "Solarized Dark",
+    "python.linting.pylintArgs": [
+        "--init-hook=\"import sys; sys.setrecursionlimit(20000)\""
+    ],
+    "python.pythonPath": "/usr/bin/python3",
+    "markdown-links.graphType": "obsidian"
+}

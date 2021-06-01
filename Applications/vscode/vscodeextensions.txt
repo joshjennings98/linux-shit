@@ -1,0 +1,10 @@
+bierner.markdown-mermaid
+eamodio.gitlens
+mhutchie.git-graph
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+ms-vscode.cpptools
+tchayen.markdown-links
+tomoki1207.pdf
+yzhang.markdown-all-in-one

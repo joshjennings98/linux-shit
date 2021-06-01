@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=DWM
-Comment=improved dynamic tiling window manager
-Exec=/home/josh/dwm/dwmstart
-Type=Application

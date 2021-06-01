@@ -1,0 +1,179 @@
+# Josh's i3 config file
+
+# set alt as mod key
+set $mod Mod1 	
+
+# set the terminal
+set $terminal st
+
+# set font, border, make edges not show when only one window open, and allow programs to request focus
+font pango:Iosevka 10	
+default_border pixel 2	
+hide_edge_borders smart		
+#focus_on_window_activation focus	
+
+# start applets on startup
+exec --no-startup-id nm-applet		
+exec --no-startup-id blueman-applet	
+exec --no-startup-id clipmenud
+
+# start scripts that use i3 ipc stuff (exec_always because they get killed on restart)
+exec_always --no-startup-id python3 /home/josh/Scripts/i3-alternating-layouts.py
+exec_always --no-startup-id python3 /home/josh/Scripts/i3-workspace-names-daemon.py -u
+
+# switch screens on startup cause silly computer gets them backwards
+exec --no-startup-id bash /home/josh/Scripts/i3-display-swap.sh
+
+# set wallpaper on startup
+exec --no-startup-id feh --bg-fill /home/josh/Wallpapers/wayofkings.png
+
+# workspace default names (i3-workspace-names-daemon.py should rename them dynamically)
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+
+# automatically put certain clients on certain workspaces
+assign [class="discord"] number $ws2
+
+# programs I like to have starting on startup
+exec discord
+
+# use mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# need to do this for i3 and origin
+for_window [instance="origin.exe"] floating enable
+
+# keybindings for i3 stuff (this doesn't include all of i3s features (may need to run i3-config-wizard and get the other commands)
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+q kill
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f floating toggle
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+r restart
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # Pressing left/right shrinks/increases width, whilst up/down shrinks/increases height
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# keybindings for programs and scripts
+bindsym $mod+Return exec $terminal
+bindsym $mod+d exec --no-startup-id bash /home/josh/Scripts/menus.sh apps
+bindsym $mod+Shift+d exec --no-startup-id /home/josh/Scripts/menus.sh dmenu
+bindsym $mod+c exec --no-startup-id clipmenu -i -fn 'Iosevka-12' -nb '#002b36' -nf '#fdf6e3' -sb '#93a1a1' -sf '#002b36' -nhb '#002b36' -shb '#93a1a1' 
+bindsym $mod+l exec slock
+bindsym $mod+Shift+s exec --no-startup-id bash /home/josh/Scripts/i3-display-swap.sh
+bindsym $mod+q exec --no-startup-id bash /home/josh/Scripts/menus.sh quick
+bindsym $mod+Shift+e exec --no-startup-id /home/josh/Scripts/menus.sh power
+bindsym $mod+Shift+p exec --no-startup-id /home/josh/Scripts/dmenu_pass
+
+# i3-bar for main monitor (single setup)
+bar {
+    output DP-0
+	tray_output DP-0
+	status_command py3status --config ~/.config/i3/py3status_single_monitor.conf
+	position top
+    
+    colors {
+        background #002b36
+        statusline #93a1a1
+        separator  #586e75
+
+        # State            Border  BG      Text
+        focused_workspace  #839496 #002b36 #93a1a1
+        active_workspace   #002b36 #002b36 #93a1a1
+        inactive_workspace #002b36 #002b36 #586e75
+        urgent_workspace   #dc322f #dc322f #fdf6e3
+    }
+}
+
+# i3-bar for main monitor (dual setup)
+#bar {
+#	output DP-0
+#	tray_output DP-0
+#	status_command py3status --config ~/.config/i3/py3status_dual_monitor1.conf
+#	position top
+#
+#	colors {
+#        background #002b36
+#        statusline #93a1a1
+#        separator  #586e75
+#
+#        # State            Border  BG      Text
+#        focused_workspace  #839496 #002b36 #93a1a1
+#        active_workspace   #002b36 #002b36 #93a1a1
+#        inactive_workspace #002b36 #002b36 #586e75
+#        urgent_workspace   #dc322f #dc322f #fdf6e3
+#	}
+#}
+#
+## i3-bar for second monitor (dual setup)
+#bar {
+#	output HDMI-0
+#	tray_output none
+#	status_command py3status --config ~/.config/i3/py3status_dual_monitor2.conf
+#	position top
+#
+#	colors {
+#        background #002b36
+#        statusline #93a1a1
+#        separator  #586e75
+#
+#        # State            Border  BG      Text
+#        focused_workspace  #839496 #002b36 #93a1a1
+#        active_workspace   #002b36 #002b36 #93a1a1
+#        inactive_workspace #002b36 #002b36 #586e75
+#        urgent_workspace   #dc322f #dc322f #fdf6e3
+#	}
+#}
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          #002b36 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #002b36 #073642 #839496 #073642
+client.unfocused        #002b36 #073642 #839496 #073642
+client.urgent           #002b36 #dc322f #fdf6e3 #002b36
+
