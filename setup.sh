@@ -73,6 +73,7 @@ cp ~/linux-stuff/.inputrc ~
 cp -r ~/linux-stuff/Applications/slock ~
 cd ~/slock
 sudo make clean install
+rm -rf ~/slock
 
 # setup lutris
 sudo add-apt-repository -y ppa:lutris-team/lutris
@@ -83,11 +84,13 @@ sudo apt install -y lutris
 cp -r ~/linux-stuff/Applications/dmenu ~
 cd ~/dmenu
 sudo make clean install
+rm -rf ~/dmenu
 
 # setup st
 cp -r ~/linux-stuff/Applications/st ~
 cd ~/st
 sudo make clean install
+rm -rf ~/st
 
 # setup clipmenud/clipnotify
 cp -r ~/linux-stuff/Applications/clipnotify ~
@@ -96,6 +99,8 @@ sudo make install
 cp -r ~/linux-stuff/Applications/clipmenu ~
 cd ~/clipmenu
 sudo make install
+rm -rf ~/clipnotify
+rm -rf ~/clipmenu
 
 # setup vscode
 cd ~
