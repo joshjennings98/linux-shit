@@ -125,7 +125,7 @@ sudo apt-get update && sudo apt-get install -y spotify-client
 
 # setup fonts
 mkdir -p ~/.local/share/fonts 
-cp iosevka_regular.ttf ~/.local/share/fonts
+cp ~/linux-stuff/iosevka_regular.ttf ~/.local/share/fonts
 fc-cache -f -v
 
 # reboot pc (optional)
