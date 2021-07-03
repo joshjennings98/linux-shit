@@ -89,7 +89,7 @@ rm -rf ~/dmenu
 # setup st
 cp -r ~/linux-stuff/Applications/st ~
 cd ~/st
-sudo make clean install
+sudo make install
 rm -rf ~/st
 
 # setup clipmenud/clipnotify
