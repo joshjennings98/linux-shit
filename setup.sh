@@ -6,6 +6,7 @@
 # - Ubuntu
 
 PACKAGES_APT=( # need to work out the packages needed to build stuff later as well as other missing ones
+    "nvidia-driver-465" # may need to update
     "i3"
     "ffmpeg"
     "apt-transport-https"
@@ -22,6 +23,8 @@ PACKAGES_APT=( # need to work out the packages needed to build stuff later as we
     "pavucontrol"
     "dxvk"
     "nautilus"
+    "libxinerama-dev"
+    "libxft-dev"
     "pinta"
     "maim"
     "jq"
@@ -47,6 +50,9 @@ PACKAGES_PIP=(
     "i3ipc"   
     "youtube-dl"
 )
+
+sudo apt-get update
+sudo apt-get upgrade -y
 
 # install apt packages
 sudo apt install -y "${PACKAGES_APT[@]}"
@@ -78,39 +84,50 @@ cp -r ~/linux-stuff/Applications/dmenu ~
 cd ~/dmenu
 sudo make clean install
 
+# setup st
+cp -r ~/linux-stuff/Applications/st ~
+cd ~/st
+sudo make clean install
+
 # setup clipmenud/clipnotify
 cp -r ~/linux-stuff/Applications/clipnotify ~
 cd ~/clipnotify
-sudo make clean install
+sudo make install
 cp -r ~/linux-stuff/Applications/clipmenu ~
 cd ~/clipmenu
-sudo make clean install
+sudo make install
 
 # setup vscode
 cd ~
-wget https://go.microsoft.com/fwlink/?LinkID=760868 -O vscode.deb
-sudo apt install vscode.deb
+curl -L -o vscode.deb "https://go.microsoft.com/fwlink/?LinkID=760868"
+sudo apt install -y ./vscode.deb
 rm vscode.deb
+mkdir -p ~/.config/Code/User
 cp -r ~/linux-stuff/Applications/vscode/snippets ~/.config/Code/User
 cp -r ~/linux-stuff/Applications/vscode/settings.json ~/.config/Code/User
 ~/Scripts/codeextensions.sh -l ~/linux-stuff/Applications/vscode/vscodeextensions.txt
 
 # setup discord
 cd ~
-wget https://discord.com/api/download?platform=linux&format=deb -O discord.deb
-sudo apt install discord.deb
+curl -L -o discord.deb "https://discord.com/api/download?platform=linux&format=deb"
+sudo apt install -y ./discord.deb
 rm discord.deb
 
 # setup spotify
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt-get update && sudo apt-get install spotify-client
+sudo apt-get update && sudo apt-get install -y spotify-client
+
+# setup fonts
+mkdir -p ~/.local/share/fonts 
+cp iosevka_regular.ttf ~/.local/share/fonts
+fc-cache -f -v
 
 # reboot pc (optional)
-read -p "Would you like to reboot? (Note: you still need to setup firefox (tablis wallpaper etc.) and probably nvidia drivers." -n 1 -r
+read -p "Would you like to reboot? (Note: you still need to setup firefox (tablis wallpaper etc.) and probably update  drivers." -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	echo reboot
+    reboot
 fi
 
