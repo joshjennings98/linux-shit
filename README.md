@@ -8,7 +8,8 @@ This repo contains my useful linux stuff like my `.bashrc` and other scripts/con
 
 The prerequisites for this script are:
 * Bash
-* Ubuntu???
+* Ubuntu
+* Git (if you're cloning the repo)
 
 ### Usage
 
@@ -17,6 +18,6 @@ To set up a new linux computer run the following:
 ```bash
 cd ~
 git clone https://github.com/joshjennings98/linux-stuff
-bash linux-stuff/setup.py
+bash linux-stuff/setup.sh
 ```
 
