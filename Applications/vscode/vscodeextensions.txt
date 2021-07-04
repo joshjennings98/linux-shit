@@ -1,10 +1,11 @@
 bierner.markdown-mermaid
 eamodio.gitlens
+foam.foam-vscode
+golang.go
 mhutchie.git-graph
 ms-python.python
 ms-python.vscode-pylance
-ms-toolsai.jupyter
 ms-vscode.cpptools
-tchayen.markdown-links
+streetsidesoftware.code-spell-checker
 tomoki1207.pdf
 yzhang.markdown-all-in-one

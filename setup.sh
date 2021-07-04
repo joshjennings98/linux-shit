@@ -129,6 +129,13 @@ curl -L -o minecraft.deb https://launcher.mojang.com/download/Minecraft.deb
 sudo apt install -y ./minecraft.deb
 rm minecraft.deb
 
+# install golang (may need to update version)
+cd ~
+curl -L -o go.tar.gz https://golang.org/dl/go1.16.5.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+
 # setup fonts
 mkdir -p ~/.local/share/fonts 
 cp ~/linux-stuff/iosevka_regular.ttf ~/.local/share/fonts

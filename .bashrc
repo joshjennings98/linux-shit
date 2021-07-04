@@ -24,3 +24,5 @@ alias linecount="git ls-files | xargs wc -l" # count lines of code in git repo
 alias reloadbashrc='source ~/.bashrc'   # reload bashrc
 alias resetwifi='sudo /etc/init.d/network-manager restart' # reset wifi cause it breaks sometimes
 
+### PATH exports
+export PATH=$PATH:/usr/local/go/bin
